@@ -30,13 +30,13 @@ public class ItemGcSupplyDutySourceRenderer : ItemInfoRenderer<ItemGCSupplyDutyS
         {
             var baseReward = rewardRow.Base.ExperienceSupply;
             var sealsSupply = rewardRow.Base.SealsSupply;
-            ImGui.Text("Level: " + asSource.GCSupplyDutyRow.RowId);
-            ImGui.Text("Exp: " + baseReward);
-            ImGui.Text("Seals: " + sealsSupply);
+            ImGui.Text(T("Level: ") + asSource.GCSupplyDutyRow.RowId);
+            ImGui.Text(T("Exp: ") + baseReward);
+            ImGui.Text(T("Seals: ") + sealsSupply);
         }
         else
         {
-            ImGui.Text("Unknown rewards");
+            ImGui.Text(T("Unknown rewards"));
         }
     };
 

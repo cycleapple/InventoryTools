@@ -123,7 +123,7 @@ public class ImGuiTooltipService
                                     {
                                         ImGui.NewLine();
                                         ImGui.Separator();
-                                        ImGui.Text("When HQ:");
+                                        ImGui.Text(T("When HQ:"));
                                         for (var index = 0; index < searchResult.Item.Base.BaseParamSpecial.Count; index++)
                                         {
                                             var baseParamSpecial = searchResult.Item.Base.BaseParamSpecial[index];
@@ -162,7 +162,7 @@ public class ImGuiTooltipService
                     if (item.Sources.Count > 0)
                     {
                         ImGui.NewLine();
-                        ImGui.TextUnformatted("Available From: ");
+                        ImGui.TextUnformatted(T("Available From: "));
                         ImGui.Separator();
                         ImGui.PushTextWrapPos();
                         var sources = item.Sources.Select(c => c.Type).Distinct().Select(
@@ -175,7 +175,7 @@ public class ImGuiTooltipService
                     if (item.Uses.Count > 0)
                     {
                         ImGui.NewLine();
-                        ImGui.TextUnformatted("Used In: ");
+                        ImGui.TextUnformatted(T("Used In: "));
                         ImGui.Separator();
                         ImGui.PushTextWrapPos();
                         var uses = item.Uses.Select(c => c.Type).Distinct().Select(
@@ -187,10 +187,10 @@ public class ImGuiTooltipService
                     ImGui.Separator();
                     using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudGrey))
                     {
-                        ImGui.TextUnformatted("Ctrl: Link");
+                        ImGui.TextUnformatted(T("Ctrl: Link"));
                         if (item.CanTryOn)
                         {
-                            ImGui.TextUnformatted("Shift: Try on");
+                            ImGui.TextUnformatted(T("Shift: Try on"));
                         }
                     }
                 }
@@ -200,37 +200,37 @@ public class ImGuiTooltipService
 
     private static void DrawBaseAttributes(ItemRow item)
     {
-        ImGui.TextUnformatted($"Item Level {item.Base.LevelItem.RowId}");
+        ImGui.TextUnformatted(TF($"Item Level {item.Base.LevelItem.RowId}"));
         if (item.ClassJobCategory != null)
         {
-            ImGui.TextUnformatted($"Equip Level {item.Base.LevelEquip}");
+            ImGui.TextUnformatted(TF($"Equip Level {item.Base.LevelEquip}"));
         }
 
         ImGui.TextUnformatted(item.FormattedRarity);
 
         if (item.EquipRace != CharacterRace.Any && item.EquipRace != CharacterRace.None)
         {
-            ImGui.TextUnformatted($"Only equippable by {item.EquipRace}");
+            ImGui.TextUnformatted(TF($"Only equippable by {item.EquipRace}"));
         }
 
         if (item.EquippableByGender != CharacterSex.Both && item.EquippableByGender != CharacterSex.NotApplicable)
         {
-            ImGui.TextUnformatted($"Only equippable by {item.EquippableByGender.ToString()}");
+            ImGui.TextUnformatted(TF($"Only equippable by {item.EquippableByGender.ToString()}"));
         }
 
         if (item.Base.CanBeHq)
         {
-            ImGui.TextUnformatted("Can be HQ");
+            ImGui.TextUnformatted(T("Can be HQ"));
         }
 
         if (item.Base.IsUnique)
         {
-            ImGui.TextUnformatted("Unique");
+            ImGui.TextUnformatted(T("Unique"));
         }
 
         if (item.Base.IsUntradable)
         {
-            ImGui.TextUnformatted("Untradable");
+            ImGui.TextUnformatted(T("Untradable"));
         }
     }
 }

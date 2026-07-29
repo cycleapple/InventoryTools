@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Globalization;
@@ -121,13 +121,13 @@ namespace InventoryTools.Logic
 
 
 
-                        if (ImGui.Selectable("Yes", currentItem == "Yes"))
+                        if (ImGui.Selectable(T("Yes"), currentItem == "Yes"))
                         {
                             columnConfiguration.FilterText = "true";
                             hasChanged = true;
                         }
 
-                        if (ImGui.Selectable("No", currentItem == "No"))
+                        if (ImGui.Selectable(T("No"), currentItem == "No"))
                         {
                             columnConfiguration.FilterText = "false";
                             hasChanged = true;
@@ -181,8 +181,8 @@ namespace InventoryTools.Logic
                             using var tooltip = ImRaii.Tooltip();
                             if (tooltip)
                             {
-                                ImGui.Text("Extra Filters");
-                                ImGui.Text("Right Click: Clear All");
+                                ImGui.Text(T("Extra Filters"));
+                                ImGui.Text(T("Right Click: Clear All"));
                             }
                         }
                     }

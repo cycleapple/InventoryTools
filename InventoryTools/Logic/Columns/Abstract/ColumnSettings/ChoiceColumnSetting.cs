@@ -42,7 +42,7 @@ public abstract class ChoiceColumnSetting<T> : ColumnSetting<T?>
         var choices = GetChoices(configuration);
         var activeChoice = CurrentValue(configuration);
 
-        var currentSearchCategory = activeChoice != null ? GetFormattedChoice(configuration, activeChoice) : Name;
+        var currentSearchCategory = activeChoice != null ? T(GetFormattedChoice(configuration, activeChoice)) : T(Name);
         ImGui.SameLine();
         ImGui.SetNextItemWidth(InputSize);
         using (var combo = ImRaii.Combo("##" + Key + "Combo", currentSearchCategory))
@@ -94,7 +94,7 @@ public abstract class ChoiceColumnSetting<T> : ColumnSetting<T?>
 
                 if (EmptyText != "")
                 {
-                    if (ImGui.Selectable(EmptyText, currentSearchCategory == ""))
+                    if (ImGui.Selectable(T(EmptyText), currentSearchCategory == ""))
                     {
                         ResetFilter(configuration);
                         configuration.IsDirty = true;
@@ -112,7 +112,7 @@ public abstract class ChoiceColumnSetting<T> : ColumnSetting<T?>
                 for (var index = 0; index < filteredChoices.Count; index++)
                 {
                     var item = filteredChoices[index];
-                    var text = GetFormattedChoice(configuration, item).Replace("\u0002\u001F\u0001\u0003", "-");
+                    var text = T(GetFormattedChoice(configuration, item)).Replace("\u0002\u001F\u0001\u0003", "-");
                     if (text == "")
                     {
                         continue;
@@ -143,11 +143,11 @@ public abstract class ChoiceColumnSetting<T> : ColumnSetting<T?>
         }
 
         ImGui.SameLine();
-        ImGuiService.HelpMarker(HelpText);
+        ImGuiService.HelpMarker(T(HelpText));
         if (HasValueSet(configuration) && ShowReset)
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button(T("Reset##") + Key + "Reset"))
             {
                 ResetFilter(configuration);
                 success = true;
@@ -163,18 +163,18 @@ public abstract class ChoiceColumnSetting<T> : ColumnSetting<T?>
         if (HasValueSet(configuration))
         {
             ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.HealerGreen);
-            ImGui.LabelText("##" + Key + "Label", Name + ":");
+            ImGui.LabelText("##" + Key + "Label", T(Name) + ":");
             ImGui.PopStyleColor();
         }
         else
         {
-            ImGui.LabelText("##" + Key + "Label", Name + ":");
+            ImGui.LabelText("##" + Key + "Label", T(Name) + ":");
         }
 
         var choices = GetChoices(configuration);
         var activeChoice = CurrentValue(configuration);
 
-        var currentSearchCategory = activeChoice != null ? GetFormattedChoice(configuration, activeChoice) : EmptyText;
+        var currentSearchCategory = activeChoice != null ? T(GetFormattedChoice(configuration, activeChoice)) : T(EmptyText);
         ImGui.SameLine();
         ImGui.SetNextItemWidth(InputSize);
         using (var combo = ImRaii.Combo("##" + Key + "Combo", currentSearchCategory))
@@ -183,7 +183,7 @@ public abstract class ChoiceColumnSetting<T> : ColumnSetting<T?>
             {
                 if (EmptyText != "")
                 {
-                    if (ImGui.Selectable(EmptyText, currentSearchCategory == ""))
+                    if (ImGui.Selectable(T(EmptyText), currentSearchCategory == ""))
                     {
                         ResetFilter(configuration);
                         configuration.IsDirty = true;
@@ -194,7 +194,7 @@ public abstract class ChoiceColumnSetting<T> : ColumnSetting<T?>
                 {
 
 
-                    var text = GetFormattedChoice(configuration, item).Replace("\u0002\u001F\u0001\u0003", "-");
+                    var text = T(GetFormattedChoice(configuration, item)).Replace("\u0002\u001F\u0001\u0003", "-");
                     if (text == "")
                     {
                         continue;
@@ -211,11 +211,11 @@ public abstract class ChoiceColumnSetting<T> : ColumnSetting<T?>
         }
 
         ImGui.SameLine();
-        ImGuiService.HelpMarker(HelpText);
+        ImGuiService.HelpMarker(T(HelpText));
         if (HasValueSet(configuration) && ShowReset)
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button(T("Reset##") + Key + "Reset"))
             {
                 ResetFilter(configuration);
                 success = true;

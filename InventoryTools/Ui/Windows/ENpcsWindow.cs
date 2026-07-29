@@ -133,11 +133,11 @@ public class ENpcsWindow : GenericTabbedTable<ENpcResidentRow>, IMenuWindow
                 {
                     if (ex.ENpcBase.IsVendor)
                     {
-                        ImGui.Text("Yes");
+                        ImGui.Text(T("Yes"));
                     }
                     else
                     {
-                        ImGui.Text("No");
+                        ImGui.Text(T("No"));
                     }
                 }
             },

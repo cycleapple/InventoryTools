@@ -35,11 +35,11 @@ public class ItemDungeonChestSourceRenderer : ItemInfoRenderer<ItemDungeonChestS
     public override Action<ItemSource> DrawTooltip => source =>
     {
         var asSource = AsSource(source);
-        ImGui.Text("Dungeon: " + asSource.ContentFinderCondition.FormattedName);
+        ImGui.Text(T("Dungeon: ") + asSource.ContentFinderCondition.FormattedName);
         using (ImRaii.PushIndent())
         {
             ImGui.Text(
-                $"Chest {asSource.DungeonChest.ChestNo + 1} ({asSource.DungeonChest.Position.X} / {asSource.DungeonChest.Position.Y})");
+                TF($"Chest {asSource.DungeonChest.ChestNo + 1} ({asSource.DungeonChest.Position.X} / {asSource.DungeonChest.Position.Y})"));
         }
     };
 
@@ -56,13 +56,13 @@ public class ItemDungeonChestSourceRenderer : ItemInfoRenderer<ItemDungeonChestS
         var groupedByDungeon = asSources.GroupBy(c => c.DungeonChest.ContentFinderCondition.RowId);
         foreach (var dungeon in groupedByDungeon)
         {
-            ImGui.Text("Dungeon: " + dungeon.First().ContentFinderCondition.Base.Name.ExtractText());
+            ImGui.Text(T("Dungeon: ") + dungeon.First().ContentFinderCondition.Base.Name.ExtractText());
             using (ImRaii.PushIndent())
             {
                 foreach (var chest in dungeon.OrderBy(c => c.DungeonChest.ChestNo))
                 {
                     ImGui.Text(
-                        $"Chest {chest.DungeonChest.ChestNo + 1} ({chest.DungeonChest.Position.X} / {chest.DungeonChest.Position.Y})");
+                        TF($"Chest {chest.DungeonChest.ChestNo + 1} ({chest.DungeonChest.Position.X} / {chest.DungeonChest.Position.Y})"));
                 }
             }
         }

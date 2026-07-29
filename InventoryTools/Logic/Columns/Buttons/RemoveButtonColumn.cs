@@ -32,7 +32,7 @@ public class RemoveButtonColumn : ButtonColumn
         {
             return null;
         }
-        if (ImGui.Button("X##RM" + rowIndex + "_" + columnIndex))
+        if (ImGui.Button(T("X##RM") + rowIndex + "_" + columnIndex))
         {
             if (searchResult.CraftItem != null && searchResult.CraftItem.IsOutputItem)
             {
@@ -43,7 +43,7 @@ public class RemoveButtonColumn : ButtonColumn
                 configuration.RemoveCuratedItem(searchResult.CuratedItem);
             }
         }
-        ImGuiUtil.HoverTooltip("Remove this item");
+        ImGuiUtil.HoverTooltip(T("Remove this item"));
 
         return null;
     }

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
 using AllaganLib.GameSheets.Sheets;
 using AllaganLib.GameSheets.Sheets.Rows;
@@ -139,7 +139,7 @@ public class ZonePreferenceFilter : SortedListFilter<uint, uint>
                 ImGui.Separator();
                 if (_searchString == "")
                 {
-                    ImGui.TextUnformatted("Start typing to search...");
+                    ImGui.TextUnformatted(T("Start typing to search..."));
                 }
                 foreach (var item in SearchTerritories.Where(c => !currentValue.ContainsKey(c.RowId)))
                 {

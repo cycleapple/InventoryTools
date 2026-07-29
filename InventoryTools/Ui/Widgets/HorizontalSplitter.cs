@@ -247,7 +247,7 @@ public class HorizontalSplitter
                 {
                     if (dragger.Success)
                     {
-                        ImGui.Button("DraggerBtn", new(-1, -1));
+                        ImGui.Button(T("DraggerBtn"), new(-1, -1));
                         if (ImGui.IsItemHovered() || ImGui.IsItemActive())
                         {
                             ImGui.SetMouseCursor(ImGuiMouseCursor.ResizeNs);

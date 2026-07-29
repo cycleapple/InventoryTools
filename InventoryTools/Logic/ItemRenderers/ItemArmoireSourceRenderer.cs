@@ -25,7 +25,7 @@ public class ItemArmoireSourceRenderer : ItemInfoRenderer<ItemArmoireSource>
     public override Action<ItemSource> DrawTooltip => source =>
     {
         var asSource = AsSource(source);
-        ImGui.Text("Category: " +
+        ImGui.Text(T("Category: ") +
                    (asSource.Cabinet.CabinetCategory?.Base.Category.Value.Text.ExtractText() ?? "Unknown"));
     };
     public override Func<ItemSource, string> GetName => source =>

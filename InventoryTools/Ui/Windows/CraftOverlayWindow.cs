@@ -172,8 +172,8 @@ public class CraftOverlayWindow : OverlayWindow
                             nextState = "Collapse";
                             break;
                     }
-                    ImGui.TextUnformatted($"Left Click: {nextState}");
-                    ImGui.TextUnformatted("Right Click: Menu");
+                    ImGui.TextUnformatted(TF($"Left Click: {nextState}"));
+                    ImGui.TextUnformatted(T("Right Click: Menu"));
                 }
             }
 
@@ -187,7 +187,7 @@ public class CraftOverlayWindow : OverlayWindow
         {
             if (popup)
             {
-                if (ImGui.MenuItem("Close"))
+                if (ImGui.MenuItem(T("Close")))
                 {
                     this.Close();
                 }
@@ -274,7 +274,7 @@ public class CraftOverlayWindow : OverlayWindow
         }
         else
         {
-            ImGui.Text("Nothing to do.");
+            ImGui.Text(T("Nothing to do."));
             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + (150 + 70 + 80 * ImGui.GetIO().FontGlobalScale));
         }
 
@@ -349,7 +349,7 @@ public class CraftOverlayWindow : OverlayWindow
 
         if (SelectedConfiguration == null)
         {
-            ImGui.Text("No craft list active.");
+            ImGui.Text(T("No craft list active."));
         }
         else if(craftList != null)
         {
@@ -483,7 +483,7 @@ public class CraftOverlayWindow : OverlayWindow
                             {
                                 if (popup.Success)
                                 {
-                                    if (ImGui.MenuItem("More Information"))
+                                    if (ImGui.MenuItem(T("More Information")))
                                     {
                                         this.MediatorService.Publish(new OpenUintWindowMessage(typeof(ItemWindow), currentItem.ItemId));
                                     }

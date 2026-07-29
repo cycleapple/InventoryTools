@@ -63,18 +63,18 @@ public abstract class ItemInfoRenderer<T> : IItemInfoRenderer where T : ItemSour
                 }
                 else
                 {
-                    ImGui.TextUnformatted($"{item.NameString} x {itemInfo.Count}" + (itemInfo.IsOptional ?? false ? " (Optional)" : ""));
+                    ImGui.TextUnformatted(TF($"{item.NameString} x {itemInfo.Count}") + (itemInfo.IsOptional ?? false ? " (Optional)" : ""));
                 }
                 if (itemInfo.Min != null && itemInfo.Max != null)
                 {
                     ImGui.SameLine();
                     if (itemInfo.Min == itemInfo.Max)
                     {
-                        ImGui.Text("(Drops 1)");
+                        ImGui.Text(T("(Drops 1)"));
                     }
                     else
                     {
-                        ImGui.Text("(Drops " + itemInfo.Min.Value + " - " + itemInfo.Max.Value + ")");
+                        ImGui.Text(T("(Drops ") + itemInfo.Min.Value + " - " + itemInfo.Max.Value + ")");
                     }
                 }
             }
@@ -119,7 +119,7 @@ public abstract class ItemInfoRenderer<T> : IItemInfoRenderer where T : ItemSour
 
         if (maps.Count != 0)
         {
-            ImGui.Text("Maps:");
+            ImGui.Text(T("Maps:"));
             using (ImRaii.PushIndent())
             {
                 foreach (var map in maps)
@@ -141,7 +141,7 @@ public abstract class ItemInfoRenderer<T> : IItemInfoRenderer where T : ItemSour
 
         if (maps.Count != 0)
         {
-            ImGui.Text("Maps:");
+            ImGui.Text(T("Maps:"));
             using (ImRaii.PushIndent())
             {
                 foreach (var map in maps)

@@ -63,7 +63,7 @@ public class EquipmentSuggestSelectedSecondaryItemColumn  : StringFormField<Equi
             var containerSize = _viewModeSetting.GetIconContainerSize(_configuration);
             if (item.SecondarySelectedItem == null)
             {
-                ImGui.Text("No item selected");
+                ImGui.Text(T("No item selected"));
             }
             else
             {

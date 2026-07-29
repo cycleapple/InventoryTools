@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Numerics;
 using CriticalCommonLib.MarketBoard;
 using CriticalCommonLib.Models;
@@ -99,12 +99,12 @@ namespace InventoryTools.Logic.Columns
                                 var pricing = _marketCache.GetPricing(searchResult.Item.RowId, selectedWorldId, false);
                                 if (pricing is { recentHistory: null, listings: null })
                                 {
-                                    ImGui.Text("No data available");
+                                    ImGui.Text(T("No data available"));
                                 }
 
                                 if (pricing is { listings: not null })
                                 {
-                                    ImGui.Text("Listings: ");
+                                    ImGui.Text(T("Listings: "));
                                     ImGui.Separator();
 
                                     foreach (var price in pricing.listings)
@@ -116,7 +116,7 @@ namespace InventoryTools.Logic.Columns
 
                                 if (pricing is { recentHistory: not null })
                                 {
-                                    ImGui.Text("History: ");
+                                    ImGui.Text(T("History: "));
                                     ImGui.Separator();
 
                                     foreach (var price in pricing.recentHistory)

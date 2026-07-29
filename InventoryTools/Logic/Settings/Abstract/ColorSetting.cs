@@ -24,25 +24,25 @@ namespace InventoryTools.Logic.Settings.Abstract
             if (HasValueSet(configuration) && value.W == 0)
             {
                 ImGui.SameLine();
-                ImGui.TextColored(ImGuiColors.DalamudRed, "The alpha is currently set to 0, this will be invisible.");
+                ImGui.TextColored(ImGuiColors.DalamudRed, T("The alpha is currently set to 0, this will be invisible."));
             }
             ImGui.SameLine();
             if (disableColouring != true && HasValueSet(configuration))
             {
                 ImGui.PushStyleColor(ImGuiCol.Text,ImGuiColors.HealerGreen);
-                ImGui.LabelText("##" + Key + "Label", customName ?? Name);
+                ImGui.LabelText("##" + Key + "Label", customName ?? T(Name));
                 ImGui.PopStyleColor();
             }
             else
             {
-                ImGui.LabelText("##" + Key + "Label", customName ?? Name);
+                ImGui.LabelText("##" + Key + "Label", customName ?? T(Name));
             }
             ImGui.SameLine();
-            ImGuiService.HelpMarker(HelpText, Image, ImageSize);
+            ImGuiService.HelpMarker(T(HelpText), Image, ImageSize);
             if (disableReset != true && HasValueSet(configuration))
             {
                 ImGui.SameLine();
-                if (ImGui.Button("Reset##" + Key + "Reset"))
+                if (ImGui.Button(T("Reset##") + Key + "Reset"))
                 {
                     Reset(configuration);
                 }

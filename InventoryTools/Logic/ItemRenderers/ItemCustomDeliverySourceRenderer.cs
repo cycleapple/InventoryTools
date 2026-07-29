@@ -32,14 +32,14 @@ public class ItemCustomDeliverySourceRenderer : ItemInfoRenderer<ItemCustomDeliv
             var collectabilityLow = asSource.SupplyRow.Base.CollectabilityLow;
             var collectabilityMid = asSource.SupplyRow.Base.CollectabilityMid;
             var collectabilityHigh = asSource.SupplyRow.Base.CollectabilityHigh;
-            ImGui.Text("NPC: " + eNpcResident.Value.Singular.ExtractText());
-            ImGui.Text("Collectability (Low): " + collectabilityLow);
-            ImGui.Text("Collectability (Mid): " + collectabilityMid);
-            ImGui.Text("Collectability (High): " + collectabilityHigh);
+            ImGui.Text(T("NPC: ") + eNpcResident.Value.Singular.ExtractText());
+            ImGui.Text(T("Collectability (Low): ") + collectabilityLow);
+            ImGui.Text(T("Collectability (Mid): ") + collectabilityMid);
+            ImGui.Text(T("Collectability (High): ") + collectabilityHigh);
         }
         else
         {
-            ImGui.Text("Unknown Npc");
+            ImGui.Text(T("Unknown Npc"));
         }
     };
 

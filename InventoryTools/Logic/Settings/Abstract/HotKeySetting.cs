@@ -36,18 +36,18 @@ namespace InventoryTools.Logic.Settings.Abstract
         public override void Draw(InventoryToolsConfiguration configuration, string? customName, bool? disableReset,
             bool? disableColouring)
         {
-            Widget.ModifiableKeySelector(customName ?? Name, HelpText, InputSize, CurrentValue(configuration),
+            Widget.ModifiableKeySelector(customName ?? T(Name), T(HelpText), InputSize, CurrentValue(configuration),
                 delegate(ModifiableHotkey hotkey)
                 {
                     UpdateFilterConfiguration(configuration, hotkey);
                 }, _virtualKeys);
 
             ImGui.SameLine();
-            ImGuiService.HelpMarker(HelpText, Image, ImageSize);
+            ImGuiService.HelpMarker(T(HelpText), Image, ImageSize);
             if (disableReset != true && HasValueSet(configuration))
             {
                 ImGui.SameLine();
-                if (ImGui.Button("Reset##" + Key + "Reset"))
+                if (ImGui.Button(T("Reset##") + Key + "Reset"))
                 {
                     Reset(configuration);
                 }

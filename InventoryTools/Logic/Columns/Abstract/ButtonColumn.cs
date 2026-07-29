@@ -105,7 +105,7 @@ public abstract class ButtonColumn : IColumn
                     : ImGuiTableColumnFlags.PreferSortDescending;
             }
         }
-        ImGui.TableSetupColumn(columnConfiguration.Name ?? (RenderName ?? Name), imGuiTableColumnFlags, Width, (uint)columnIndex);
+        ImGui.TableSetupColumn(columnConfiguration.Name ?? T(RenderName ?? Name), imGuiTableColumnFlags, Width, (uint)columnIndex);
     }
 
     public bool? DrawFilter(ColumnConfiguration columnConfiguration, int columnIndex)

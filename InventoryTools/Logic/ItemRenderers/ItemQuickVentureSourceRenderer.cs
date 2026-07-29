@@ -31,9 +31,9 @@ public class ItemQuickVentureSourceRenderer : ItemInfoRenderer<ItemQuickVentureS
          ImGui.Text($"{asSource.RetainerTaskRow.FormattedName}");
          using (ImRaii.PushIndent())
          {
-             ImGui.Text($"Venture Cost: {asSource.RetainerTaskRow.Base.VentureCost}");
+             ImGui.Text(TF($"Venture Cost: {asSource.RetainerTaskRow.Base.VentureCost}"));
              ImGui.Text(
-                 $"Time: {asSource.RetainerTaskRow.Base.MaxTimemin.Minutes().ToHumanReadableString()}");
+                 TF($"Time: {asSource.RetainerTaskRow.Base.MaxTimemin.Minutes().ToHumanReadableString()}"));
          }
     };
 

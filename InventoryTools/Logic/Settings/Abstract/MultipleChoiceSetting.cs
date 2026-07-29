@@ -32,30 +32,30 @@ public abstract class MultipleChoiceSetting<T> : Setting<List<T>> where T:notnul
         if (disableColouring != true && HasValueSet(configuration))
         {
             ImGui.PushStyleColor(ImGuiCol.Text,ImGuiColors.HealerGreen);
-            ImGui.LabelText("##" + Key + "Label", customName ?? Name);
+            ImGui.LabelText("##" + Key + "Label", customName ?? T(Name));
             ImGui.PopStyleColor();
         }
         else
         {
-            ImGui.LabelText("##" + Key + "Label", customName ?? Name);
+            ImGui.LabelText("##" + Key + "Label", customName ?? T(Name));
         }
 
         var choices = GetChoices(configuration);
         var selectedChoices = CurrentValue(configuration);
         ImGui.SetNextItemWidth(InputSize);
-        using (var combo = ImRaii.Combo("##"+Key+"Combo", GetPreviewValue(selectedChoices), ImGuiComboFlags.HeightLarge))
+        using (var combo = ImRaii.Combo("##"+Key+"Combo", T(GetPreviewValue(selectedChoices)), ImGuiComboFlags.HeightLarge))
         {
             if (combo.Success)
             {
                 var searchString = SearchString;
-                ImGui.InputText("Start typing to search..##ItemSearch", ref searchString, 50);
+                ImGui.InputText(T("Start typing to search..##ItemSearch"), ref searchString, 50);
                 if (_searchString != searchString)
                 {
                     SearchString = searchString;
                 }
                 var activeChoices = GetActiveChoices(configuration);
                 ImGui.SameLine();
-                if (ImGui.Button("Add All"))
+                if (ImGui.Button(T("Add All")))
                 {
                     foreach (var item in activeChoices)
                     {
@@ -78,7 +78,7 @@ public abstract class MultipleChoiceSetting<T> : Setting<List<T>> where T:notnul
                             continue;
                         }
 
-                        if (ImGui.Selectable(item.Value.Replace("\u0002\u001F\u0001\u0003", "-"),
+                        if (ImGui.Selectable(T(item.Value).Replace("\u0002\u001F\u0001\u0003", "-"),
                                 selectedChoices.Contains(item.Key)))
                         {
                             if (selectedChoices.Contains(item.Key))
@@ -99,11 +99,11 @@ public abstract class MultipleChoiceSetting<T> : Setting<List<T>> where T:notnul
             }
         }
         ImGui.SameLine();
-        ImGuiService.HelpMarker(HelpText, Image, ImageSize);
+        ImGuiService.HelpMarker(T(HelpText), Image, ImageSize);
         if (disableReset != true && HasValueSet(configuration))
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button(T("Reset##") + Key + "Reset"))
             {
                 Reset(configuration);
             }
@@ -123,7 +123,7 @@ public abstract class MultipleChoiceSetting<T> : Setting<List<T>> where T:notnul
             var selectedChoicesCount = selectedChoices.Count;
             if (actualItem != null)
             {
-                var itemSearchCategoryName = actualItem
+                var itemSearchCategoryName = T(actualItem)
                     .Replace("\u0002\u001F\u0001\u0003", "-");
                 if (ImGui.Button(itemSearchCategoryName + " X" + "##" + Key + index))
                 {

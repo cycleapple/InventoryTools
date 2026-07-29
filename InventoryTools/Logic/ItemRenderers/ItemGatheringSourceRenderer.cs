@@ -240,15 +240,15 @@ public abstract class ItemGatheringSourceRenderer<T> : ItemInfoRenderer<T> where
         var asSource = (ItemGatheringSource)source;
 
          var level = asSource.GatheringItem.Base.GatheringItemLevel.Value.GatheringItemLevel;
-         ImGui.Text("Level:" + (level == 0 ? "N/A" : level));
+         ImGui.Text(T("Level:") + (level == 0 ? "N/A" : level));
          var stars = asSource.GatheringItem.Base.GatheringItemLevel.Value.Stars;
-         ImGui.Text("Stars:" + (stars == 0 ? "N/A" : stars));
+         ImGui.Text(T("Stars:") + (stars == 0 ? "N/A" : stars));
          var perceptionRequired = asSource.GatheringItem.Base.PerceptionReq;
-         ImGui.Text("Perception Required:" + (perceptionRequired == 0 ? "N/A" : stars));
+         ImGui.Text(T("Perception Required:") + (perceptionRequired == 0 ? "N/A" : stars));
 
          if (asSource.GatheringItem.AvailableAtTimedNode)
          {
-             ImGui.Text("Maps:");
+             ImGui.Text(T("Maps:"));
              using (ImRaii.PushIndent())
              {
                  foreach (var gatheringPoint in asSource.GatheringItem.GatheringPoints)

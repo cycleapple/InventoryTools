@@ -65,18 +65,18 @@ namespace InventoryTools.Ui
         {
             if (SubmarineExploration == null)
             {
-                ImGui.TextUnformatted("Submarine Exploration Point with the ID " + _submarineExplorationPointId + " could not be found.");
+                ImGui.TextUnformatted(T("Submarine Exploration Point with the ID ") + _submarineExplorationPointId + " could not be found.");
             }
             else
             {
                 ImGui.TextUnformatted(SubmarineExploration.Base.Location.ExtractText());
-                ImGui.TextUnformatted("Unlocked Via: " + SubmarineExploration.Unlock?.Base.Location.ExtractText() ?? "N/A");
-                ImGui.TextUnformatted("Rank Required: " + SubmarineExploration.Base.RankReq);
+                ImGui.TextUnformatted(T("Unlocked Via: ") + SubmarineExploration.Unlock?.Base.Location.ExtractText() ?? "N/A");
+                ImGui.TextUnformatted(T("Rank Required: ") + SubmarineExploration.Base.RankReq);
                 ;
                 ImGui.Image(ImGuiService.GetIconTexture(Icons.AirshipIcon).Handle, new Vector2(100, 100) * ImGui.GetIO().FontGlobalScale);
 
 
-                if (ImGui.CollapsingHeader("Rewards (" + _drops.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+                if (ImGui.CollapsingHeader(T("Rewards (") + _drops.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                 {
                     ImGuiStylePtr style = ImGui.GetStyle();
                     float windowVisibleX2 = ImGui.GetWindowPos().X + ImGui.GetWindowContentRegionMax().X;
@@ -121,9 +121,9 @@ namespace InventoryTools.Ui
                 }
 
                 #if DEBUG
-                if (ImGui.CollapsingHeader("Debug"))
+                if (ImGui.CollapsingHeader(T("Debug")))
                 {
-                    ImGui.TextUnformatted("Duty ID: " + _submarineExplorationPointId);
+                    ImGui.TextUnformatted(T("Duty ID: ") + _submarineExplorationPointId);
                     Utils.PrintOutObject(SubmarineExploration, 0, new List<string>());
                 }
                 #endif

@@ -71,7 +71,7 @@ public class EquipmentSuggestSelectedItemColumn  : StringFormField<EquipmentSugg
             var containerSize = _viewModeSetting.GetIconContainerSize(_configuration);
             if (item.SelectedItem == null)
             {
-                ImGui.Text("No item selected");
+                ImGui.Text(T("No item selected"));
             }
             else
             {
@@ -250,7 +250,7 @@ public class EquipmentSuggestSelectedItemColumn  : StringFormField<EquipmentSugg
                     }
                 }
 
-                if (ImGui.Selectable("Add to new Craft List"))
+                if (ImGui.Selectable(T("Add to new Craft List")))
                 {
                     Task.Run(() =>
                     {
@@ -265,7 +265,7 @@ public class EquipmentSuggestSelectedItemColumn  : StringFormField<EquipmentSugg
                         filter.NeedsRefresh = true;
                     });
                 }
-                if (ImGui.Selectable("Add to new Craft List (ephemeral)"))
+                if (ImGui.Selectable(T("Add to new Craft List (ephemeral)")))
                 {
                     Task.Run(() =>
                     {
@@ -305,7 +305,7 @@ public class EquipmentSuggestSelectedItemColumn  : StringFormField<EquipmentSugg
                     }
                 }
 
-                if (ImGui.Selectable("Add to new Curated List"))
+                if (ImGui.Selectable(T("Add to new Curated List")))
                 {
                     Task.Run(() =>
                     {

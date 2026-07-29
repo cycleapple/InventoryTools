@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Dalamud.NET.Sdk/13.1.0">
   <PropertyGroup>
     <AssemblyName>InventoryTools</AssemblyName>
-    <Version>1.13.1.10</Version>
+    <Version>1.13.1.11</Version>
     <NoWarn>IDE0003</NoWarn>
     <OutputType>Library</OutputType>
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -11,6 +11,8 @@
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Localization\zh-TW.json" />
+    <Using Include="InventoryTools.Localization.UiText" Static="true" />
     <PackageReference Include="AllaganLib.Interface" Version="1.3.7" />
     <PackageReference Include="AllaganLib.Monitors" Version="1.3.12" />
     <PackageReference Include="Autofac" Version="8.4.0" />

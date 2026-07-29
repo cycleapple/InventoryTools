@@ -54,7 +54,7 @@ public class PopupMenu
 
         public string? DrawPopup()
         {
-            if (ImGui.Selectable(_name))
+            if (ImGui.Selectable(T(_name)))
             {
                 _callback?.Invoke(_id);
                 return null;
@@ -62,7 +62,7 @@ public class PopupMenu
 
             if (_tooltip != null)
             {
-                OtterGui.ImGuiUtil.HoverTooltip(_tooltip);
+                OtterGui.ImGuiUtil.HoverTooltip(T(_tooltip));
             }
 
             return null;
@@ -105,7 +105,7 @@ public class PopupMenu
 
         public string? DrawPopup()
         {
-            if (ImGui.Selectable(_name))
+            if (ImGui.Selectable(T(_name)))
             {
                 _newName = _defaultName;
                 return _popupName;
@@ -113,7 +113,7 @@ public class PopupMenu
 
             if (_tooltip != null)
             {
-                OtterGui.ImGuiUtil.HoverTooltip(_tooltip);
+                OtterGui.ImGuiUtil.HoverTooltip(T(_tooltip));
             }
 
             return null;
@@ -148,16 +148,16 @@ public class PopupMenu
                 return ;
 
             ImGui.TextUnformatted(
-                _question + "\nThis operation cannot be undone!\n\n");
+                T(_question) + "\n" + T("This operation cannot be undone!") + "\n\n");
             ImGui.Separator();
 
-            if (ImGui.Button("OK", new Vector2(120, 0) * ImGui.GetIO().FontGlobalScale))
+            if (ImGui.Button(T("OK"), new Vector2(120, 0) * ImGui.GetIO().FontGlobalScale))
             {
                 _callback?.Invoke(_id, true);
                 ImGui.CloseCurrentPopup();
             }
             ImGui.SameLine();
-            if (ImGui.Button("Cancel", new Vector2(120, 0) * ImGui.GetIO().FontGlobalScale))
+            if (ImGui.Button(T("Cancel"), new Vector2(120, 0) * ImGui.GetIO().FontGlobalScale))
             {
                 _callback?.Invoke(_id, false);
                 ImGui.CloseCurrentPopup();
@@ -167,14 +167,14 @@ public class PopupMenu
 
         public string? DrawPopup()
         {
-            if (ImGui.Selectable(_name))
+            if (ImGui.Selectable(T(_name)))
             {
                 return _popupName;
             }
 
             if (_tooltip != null)
             {
-                OtterGui.ImGuiUtil.HoverTooltip(_tooltip);
+                OtterGui.ImGuiUtil.HoverTooltip(T(_tooltip));
             }
 
             return null;

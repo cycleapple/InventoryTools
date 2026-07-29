@@ -186,7 +186,7 @@ namespace InventoryTools.Ui
                 {
                     var highlightItems = itemTable.HighlightItems;
                     ImGuiService.CenterElement(20 * ImGui.GetIO().FontGlobalScale);
-                    ImGui.Checkbox("Highlight?" + "###" + itemTable.Key + "VisibilityCheckbox",
+                    ImGui.Checkbox(T("Highlight?") + "###" + itemTable.Key + "VisibilityCheckbox",
                         ref highlightItems);
                     if (highlightItems != itemTable.HighlightItems)
                     {
@@ -203,7 +203,7 @@ namespace InventoryTools.Ui
                         itemTable.ClearFilters();
                     }
 
-                    ImGuiUtil.HoverTooltip("Clear the current search.");
+                    ImGuiUtil.HoverTooltip(T("Clear the current search."));
 
                 }
             }
@@ -245,7 +245,7 @@ namespace InventoryTools.Ui
                         }
                     }
 
-                    ImGuiUtil.HoverTooltip("Refresh Market Prices");
+                    ImGuiUtil.HoverTooltip(T("Refresh Market Prices"));
                     ImGui.SameLine();
                     ImGuiService.CenterElement(24 * ImGui.GetIO().FontGlobalScale);
                     if (_csvIcon.Draw(ImGuiService.GetImageTexture("export2").Handle, "exportCsv"))
@@ -254,7 +254,7 @@ namespace InventoryTools.Ui
                             (b, s) => { SaveCallback(itemTable, b, s); }, null, true);
                     }
 
-                    ImGuiUtil.HoverTooltip("Export to CSV");
+                    ImGuiUtil.HoverTooltip(T("Export to CSV"));
                     if (filterConfiguration.FilterType == FilterType.CraftFilter &&
                         _gameUiManager.IsWindowVisible(
                             CriticalCommonLib.Services.Ui.WindowName.SubmarinePartsMenu))
@@ -263,7 +263,7 @@ namespace InventoryTools.Ui
                         if (subMarinePartsMenu != null)
                         {
                             ImGui.SameLine();
-                            if (ImGui.Button("Add Company Craft to List"))
+                            if (ImGui.Button(T("Add Company Craft to List")))
                             {
                                 var subAddon = (SubmarinePartsMenuAddon*)subMarinePartsMenu;
                                 for (byte i = 0; i < 6; i++)
@@ -291,9 +291,9 @@ namespace InventoryTools.Ui
                     if (filterConfiguration.FilterType == FilterType.CraftFilter)
                     {
                         ImGui.SameLine();
-                        ImGui.TextUnformatted("Total Cost NQ: " + filterConfiguration.CraftList.MinimumNQCost);
+                        ImGui.TextUnformatted(T("Total Cost NQ: ") + filterConfiguration.CraftList.MinimumNQCost);
                         ImGui.SameLine();
-                        ImGui.TextUnformatted("Total Cost HQ: " + filterConfiguration.CraftList.MinimumHQCost);
+                        ImGui.TextUnformatted(T("Total Cost HQ: ") + filterConfiguration.CraftList.MinimumHQCost);
                     }
 
                     if (filterConfiguration.FilterType == FilterType.CraftFilter)
@@ -324,7 +324,7 @@ namespace InventoryTools.Ui
                         MediatorService.Publish(new ToggleGenericWindowMessage(typeof(ConfigurationWindow)));
                     }
 
-                    ImGuiUtil.HoverTooltip("Open the configuration window.");
+                    ImGuiUtil.HoverTooltip(T("Open the configuration window."));
 
                     ImGui.SetCursorPosY(0);
                     width -= 30 * ImGui.GetIO().FontGlobalScale;
@@ -335,7 +335,7 @@ namespace InventoryTools.Ui
                         MediatorService.Publish(new ToggleGenericWindowMessage(typeof(FiltersWindow)));
                     }
 
-                    ImGuiUtil.HoverTooltip("Open the items window.");
+                    ImGuiUtil.HoverTooltip(T("Open the items window."));
 
                     ImGui.SetCursorPosY(0);
                     width -= 30 * ImGui.GetIO().FontGlobalScale;
@@ -346,7 +346,7 @@ namespace InventoryTools.Ui
                         MediatorService.Publish(new ToggleGenericWindowMessage(typeof(CraftsWindow)));
                     }
 
-                    ImGuiUtil.HoverTooltip("Open the craft window.");
+                    ImGuiUtil.HoverTooltip(T("Open the craft window."));
 
                     var totalItems =  itemTable.RenderSearchResults.Count + " items";
 

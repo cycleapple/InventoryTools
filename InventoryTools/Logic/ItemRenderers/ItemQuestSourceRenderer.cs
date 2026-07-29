@@ -54,16 +54,16 @@ public class ItemQuestSourceRenderer : ItemInfoRenderer<ItemQuestSource>
         var quest = asSource.Quest.Value;
 
         var questName = quest.Name.ToImGuiString();
-        ImGui.Text("Name: " + questName);
-        ImGui.Text("Expansion: " + quest.Expansion.Value.Name.ToImGuiString());
+        ImGui.Text(T("Name: ") + questName);
+        ImGui.Text(T("Expansion: ") + quest.Expansion.Value.Name.ToImGuiString());
         if (quest.BeastTribe.RowId != 0)
         {
-            ImGui.Text("Allied Society: " + quest.BeastTribe.Value.Name.ToImGuiString());
+            ImGui.Text(T("Allied Society: ") + quest.BeastTribe.Value.Name.ToImGuiString());
         }
         if (quest.Festival.RowId != 0 && _festivalNames.ContainsKey(quest.Festival.RowId))
         {
             ImGui.PushTextWrapPos();
-            ImGui.Text("Only available from " + _festivalNames[quest.Festival.RowId]);
+            ImGui.Text(T("Only available from ") + _festivalNames[quest.Festival.RowId]);
             ImGui.PopTextWrapPos();
         }
 

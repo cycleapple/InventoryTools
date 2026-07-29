@@ -1,8 +1,8 @@
 ﻿{
   "Author": "Critical_Impact",
   "Name": "Allagan Tools",
-  "Punchline": "Get organized in FFXIV, easily locate/show where to sort items, plan your crafting, and search for mobs, duties, airships, and submarines!",
-  "Description": "Allagan Tool's primary purpose is to keep track of items across your characters/retainers/free company. With it's filter system you'll never lose track of items or not know where they should be sorted.\n\nWhile this is it's primary purpose, it has quite an exhaustive list of other features including:\n\t- Craft planning\n\t- Market board integration\n\t- Item highlighting in inventories when searching/sorting and picking ingredients for crafts\n\t- Item window that includes vendor and source information among other things\n\t- Duty/mob/airship/submarine windows that are fully searchable\n\t- A filtering system that lets you setup complex searches for specific items \n\t- Tooltip integration that'll let you see where the items are on hover",
+  "Punchline": "整理 FFXIV 物品、查找收納位置、規劃製作，並搜尋怪物、任務、飛空艇與潛水艇資料。",
+  "Description": "Allagan Tools 主要用於追蹤各角色、僱員與公會的物品，並透過篩選系統協助查找物品及規劃收納位置。\n\n其他功能包括：\n\t- 製作規劃\n\t- 市場佈告板整合\n\t- 搜尋、整理與取得製作素材時標示物品\n\t- 顯示商店與取得來源等資料的物品視窗\n\t- 可搜尋任務、怪物、飛空艇與潛水艇資料\n\t- 可建立複雜物品搜尋條件的篩選系統\n\t- 在物品提示資訊中顯示持有位置",
   "Tags": ["Inventory", "Sorting", "Filtering"],
   "InternalName": "InventoryTools",
   "RepoUrl": "https://github.com/cycleapple/InventoryTools/tree/api13-tw",

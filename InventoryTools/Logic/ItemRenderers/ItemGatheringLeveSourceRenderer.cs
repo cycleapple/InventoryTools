@@ -47,13 +47,13 @@ public class ItemGatheringLeveSourceRenderer : ItemInfoRenderer<ItemGatheringLev
         var asSource = AsSource(source);
         var leveRow = asSource.Leve.Value;
 
-        ImGui.TextUnformatted("Leve: " + leveRow.Name.ExtractText());
-        ImGui.TextUnformatted("Class: " + leveRow.ClassJobCategory.Value.Name.ExtractText());
-        ImGui.TextUnformatted("EXP Reward: " + asSource.ExpReward);
-        ImGui.TextUnformatted("Allowance Cost: " + leveRow.AllowanceCost);
-        ImGui.TextUnformatted("Loot Chance: " + asSource.LeveRewardItem.Value.ProbabilityPercent[asSource.RewardItemIndex] + "%");
+        ImGui.TextUnformatted(T("Leve: ") + leveRow.Name.ExtractText());
+        ImGui.TextUnformatted(T("Class: ") + leveRow.ClassJobCategory.Value.Name.ExtractText());
+        ImGui.TextUnformatted(T("EXP Reward: ") + asSource.ExpReward);
+        ImGui.TextUnformatted(T("Allowance Cost: ") + leveRow.AllowanceCost);
+        ImGui.TextUnformatted(T("Loot Chance: ") + asSource.LeveRewardItem.Value.ProbabilityPercent[asSource.RewardItemIndex] + "%");
 
-        ImGui.TextUnformatted("Reward Items: ");
+        ImGui.TextUnformatted(T("Reward Items: "));
         using (ImRaii.PushIndent())
         {
             for (var itemGroupIndex = 0; itemGroupIndex < asSource.Leve.Value.LeveRewardItem.Value.LeveRewardItemGroup.Count; itemGroupIndex++)
@@ -63,7 +63,7 @@ public class ItemGatheringLeveSourceRenderer : ItemInfoRenderer<ItemGatheringLev
                 {
                     continue;
                 }
-                ImGui.TextUnformatted("Loot Chance: " + asSource.Leve.Value.LeveRewardItem.Value.ProbabilityPercent[itemGroupIndex] + "%");
+                ImGui.TextUnformatted(T("Loot Chance: ") + asSource.Leve.Value.LeveRewardItem.Value.ProbabilityPercent[itemGroupIndex] + "%");
                 for (var index = 0; index < itemGroup.Value.Item.Count; index++)
                 {
                     var itemId = itemGroup.Value.Item[index].RowId;
@@ -80,7 +80,7 @@ public class ItemGatheringLeveSourceRenderer : ItemInfoRenderer<ItemGatheringLev
                         _textureProvider.GetFromGameIcon(new GameIconLookup(item.Icon)).GetWrapOrEmpty().Handle,
                         new Vector2(18, 18) * ImGui.GetIO().FontGlobalScale);
                     ImGui.SameLine();
-                    ImGui.TextUnformatted($"{item.NameString} x {count}");
+                    ImGui.TextUnformatted(TF($"{item.NameString} x {count}"));
                     if (isHQ)
                     {
                         ImGui.SameLine();

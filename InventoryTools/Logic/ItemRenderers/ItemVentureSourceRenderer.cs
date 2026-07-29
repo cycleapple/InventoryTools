@@ -125,23 +125,23 @@ public abstract class ItemVentureSourceRenderer<T> : ItemInfoRenderer<T> where T
         ImGui.Text($"{asSource.RetainerTaskRow.FormattedName}");
         using (ImRaii.PushIndent())
         {
-            ImGui.Text($"Venture Cost: {asSource.RetainerTaskRow.Base.VentureCost}");
-            ImGui.Text($"Required Level: {asSource.RetainerTaskRow.Base.RetainerLevel}");
+            ImGui.Text(TF($"Venture Cost: {asSource.RetainerTaskRow.Base.VentureCost}"));
+            ImGui.Text(TF($"Required Level: {asSource.RetainerTaskRow.Base.RetainerLevel}"));
             if (asSource.RetainerTaskRow.Base.RequiredGathering != 0)
             {
                 ImGui.Text(
-                    $"Required Gathering: {asSource.RetainerTaskRow.Base.RequiredGathering}");
+                    TF($"Required Gathering: {asSource.RetainerTaskRow.Base.RequiredGathering}"));
             }
 
             if (asSource.RetainerTaskRow.Base.RequiredItemLevel != 0)
             {
                 ImGui.Text(
-                    $"Required Item Level: {asSource.RetainerTaskRow.Base.RequiredItemLevel}");
+                    TF($"Required Item Level: {asSource.RetainerTaskRow.Base.RequiredItemLevel}"));
             }
 
-            ImGui.Text($"Experience: {asSource.RetainerTaskRow.Base.Experience}");
+            ImGui.Text(TF($"Experience: {asSource.RetainerTaskRow.Base.Experience}"));
             ImGui.Text(
-                $"Time: {asSource.RetainerTaskRow.Base.MaxTimemin.Minutes().ToHumanReadableString()}");
+                TF($"Time: {asSource.RetainerTaskRow.Base.MaxTimemin.Minutes().ToHumanReadableString()}"));
         }
     };
 

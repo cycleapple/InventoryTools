@@ -28,11 +28,11 @@ public class ItemCompanyLeveSourceRenderer : ItemInfoRenderer<ItemCompanyLeveSou
     {
         var asSource = AsSource(source);
         var leveRow = asSource.Leve.Value;
-        ImGui.TextUnformatted("Leve: " + leveRow.Name.ExtractText());
-        ImGui.TextUnformatted("Class: " + leveRow.ClassJobCategory.Value.Name.ExtractText());
-        ImGui.TextUnformatted("EXP Reward: " + asSource.ExpReward);
-        ImGui.TextUnformatted("Seals Rewarded: " + asSource.SealsRewarded);
-        ImGui.TextUnformatted("Allowance Cost: " + leveRow.AllowanceCost);
+        ImGui.TextUnformatted(T("Leve: ") + leveRow.Name.ExtractText());
+        ImGui.TextUnformatted(T("Class: ") + leveRow.ClassJobCategory.Value.Name.ExtractText());
+        ImGui.TextUnformatted(T("EXP Reward: ") + asSource.ExpReward);
+        ImGui.TextUnformatted(T("Seals Rewarded: ") + asSource.SealsRewarded);
+        ImGui.TextUnformatted(T("Allowance Cost: ") + leveRow.AllowanceCost);
     };
 
     public override Func<ItemSource, string> GetName => source =>

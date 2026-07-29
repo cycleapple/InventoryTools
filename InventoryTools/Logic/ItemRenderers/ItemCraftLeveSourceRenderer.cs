@@ -42,11 +42,11 @@ public class ItemCraftLeveSourceRenderer : ItemInfoRenderer<ItemCraftLeveSource>
         var asSource = AsSource(source);
         var leveRow = asSource.Leve.Value;
 
-        ImGui.TextUnformatted("Leve: " + leveRow.Name.ExtractText());
-        ImGui.TextUnformatted("Class: " + leveRow.ClassJobCategory.Value.Name.ExtractText());
-        ImGui.TextUnformatted("EXP Reward: " + asSource.ExpReward);
-        ImGui.TextUnformatted("Allowance Cost: " + leveRow.AllowanceCost);
-        ImGui.TextUnformatted("Loot Chance: " + asSource.LeveRewardItem.Value.ProbabilityPercent[asSource.RewardItemIndex] + "%");
+        ImGui.TextUnformatted(T("Leve: ") + leveRow.Name.ExtractText());
+        ImGui.TextUnformatted(T("Class: ") + leveRow.ClassJobCategory.Value.Name.ExtractText());
+        ImGui.TextUnformatted(T("EXP Reward: ") + asSource.ExpReward);
+        ImGui.TextUnformatted(T("Allowance Cost: ") + leveRow.AllowanceCost);
+        ImGui.TextUnformatted(T("Loot Chance: ") + asSource.LeveRewardItem.Value.ProbabilityPercent[asSource.RewardItemIndex] + "%");
         DrawItems("Possible Reward Items: ", asSource.RewardItems);
         DrawMaps(source);
     };

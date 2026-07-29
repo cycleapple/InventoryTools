@@ -452,7 +452,7 @@ public class ItemInfoRenderService : IDisposable
 
                 if (rendererType == RendererType.Source)
                 {
-                    ImGui.Text("Item");
+                    ImGui.Text(T("Item"));
                     ImGui.Separator();
                     foreach (var item in items)
                     {
@@ -472,7 +472,7 @@ public class ItemInfoRenderService : IDisposable
                     if (costItems.Count > 0)
                     {
                         ImGui.NewLine();
-                        ImGui.Text("Related Items:");
+                        ImGui.Text(T("Related Items:"));
                         ImGui.Separator();
                         foreach (var item in costItems)
                         {
@@ -494,7 +494,7 @@ public class ItemInfoRenderService : IDisposable
                 {
                     if (costItems.Count > 0)
                     {
-                        ImGui.Text("Items:");
+                        ImGui.Text(T("Items:"));
                         ImGui.Separator();
                         foreach (var item in costItems)
                         {
@@ -515,7 +515,7 @@ public class ItemInfoRenderService : IDisposable
                     if (items.Count > 0)
                     {
                         ImGui.NewLine();
-                        ImGui.Text("Related Items");
+                        ImGui.Text(T("Related Items"));
                         ImGui.Separator();
                         foreach (var item in items)
                         {
@@ -543,7 +543,7 @@ public class ItemInfoRenderService : IDisposable
                 if (popup.Success)
                 {
                     var typeName = (rendererType == RendererType.Source ? this.GetSourceTypeName(firstItem.GetType()) : this.GetUseTypeName(firstItem.GetType()));
-                    ImGui.Text("Pick a " + (typeName.Plural ?? typeName.Singular));
+                    ImGui.Text(T("Pick a ") + (typeName.Plural ?? typeName.Singular));
                     ImGui.Separator();
                     for (var index = 0; index < itemSources.Count; index++)
                     {
@@ -626,7 +626,7 @@ public class ItemInfoRenderService : IDisposable
                             if (costItems.Count > 0)
                             {
                                 ImGui.NewLine();
-                                ImGui.Text("Related Items");
+                                ImGui.Text(T("Related Items"));
                                 ImGui.Separator();
                                 foreach (var item in costItems)
                                 {
@@ -649,7 +649,7 @@ public class ItemInfoRenderService : IDisposable
                         {
                             if (costItems.Count > 0)
                             {
-                                ImGui.Text("Items:");
+                                ImGui.Text(T("Items:"));
                                 ImGui.Separator();
                                 foreach (var item in costItems)
                                 {
@@ -675,7 +675,7 @@ public class ItemInfoRenderService : IDisposable
                                     ImGui.NewLine();
                                 }
 
-                                ImGui.Text("Related Items");
+                                ImGui.Text(T("Related Items"));
                                 ImGui.Separator();
                                 foreach (var item in items)
                                 {
@@ -834,7 +834,7 @@ public class ItemInfoRenderService : IDisposable
             using var tt = ImRaii.Tooltip();
             if (tt.Success)
             {
-                ImGui.Text("No tooltip configured for " + (rendererType == RendererType.Source
+                ImGui.Text(T("No tooltip configured for ") + (rendererType == RendererType.Source
                     ? this.GetSourceTypeName(firstItem.GetType())
                     : this.GetUseTypeName(firstItem.GetType())).Singular + ", please report this!");
             }

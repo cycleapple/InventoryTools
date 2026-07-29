@@ -66,8 +66,8 @@ public class ItemFateShopSourceRenderer : ItemInfoRenderer<ItemFateShopSource>
     {
         var asSource = AsSource(source);
 
-        ImGui.Text($"Shop: {asSource.Shop.Name}");
-        ImGui.Text("Rewards:");
+        ImGui.Text(TF($"Shop: {asSource.Shop.Name}"));
+        ImGui.Text(T("Rewards:"));
         using (ImRaii.PushIndent())
         {
             foreach (var reward in asSource.ShopListing.Rewards)
@@ -86,7 +86,7 @@ public class ItemFateShopSourceRenderer : ItemInfoRenderer<ItemFateShopSource>
                 }
             }
         }
-        ImGui.Text("Costs:");
+        ImGui.Text(T("Costs:"));
         using (ImRaii.PushIndent())
         {
             foreach (var cost in asSource.ShopListing.Costs)

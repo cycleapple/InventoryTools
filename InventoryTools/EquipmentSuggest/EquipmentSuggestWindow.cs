@@ -81,22 +81,22 @@ public class EquipmentSuggestWindow : GenericWindow, IMenuWindow
                 {
                     if (menu)
                     {
-                        if (ImGui.MenuItem("Configuration"))
+                        if (ImGui.MenuItem(T("Configuration")))
                         {
                             MediatorService.Publish(new OpenGenericWindowMessage(typeof(ConfigurationWindow)));
                         }
 
-                        if (ImGui.MenuItem("Changelog"))
+                        if (ImGui.MenuItem(T("Changelog")))
                         {
                             MediatorService.Publish(new OpenGenericWindowMessage(typeof(ChangelogWindow)));
                         }
 
-                        if (ImGui.MenuItem("Help"))
+                        if (ImGui.MenuItem(T("Help")))
                         {
                             MediatorService.Publish(new OpenGenericWindowMessage(typeof(HelpWindow)));
                         }
 
-                        if (ImGui.MenuItem("Enable Verbose Logging", "",
+                        if (ImGui.MenuItem(T("Enable Verbose Logging"), "",
                                 this._pluginLog.MinimumLogLevel == LogEventLevel.Verbose))
                         {
                             if (this._pluginLog.MinimumLogLevel == LogEventLevel.Verbose)
@@ -109,17 +109,17 @@ public class EquipmentSuggestWindow : GenericWindow, IMenuWindow
                             }
                         }
 
-                        if (ImGui.MenuItem("Report a Issue"))
+                        if (ImGui.MenuItem(T("Report a Issue")))
                         {
                             "https://github.com/Critical-Impact/InventoryTools".OpenBrowser();
                         }
 
-                        if (ImGui.MenuItem("Ko-Fi"))
+                        if (ImGui.MenuItem(T("Ko-Fi")))
                         {
                             "https://ko-fi.com/critical_impact".OpenBrowser();
                         }
 
-                        if (ImGui.MenuItem("Close"))
+                        if (ImGui.MenuItem(T("Close")))
                         {
                             this.IsOpen = false;
                         }
@@ -130,13 +130,13 @@ public class EquipmentSuggestWindow : GenericWindow, IMenuWindow
                 {
                     if (menu)
                     {
-                        if (ImGui.MenuItem("Class/Job", "",
+                        if (ImGui.MenuItem(T("Class/Job"), "",
                                 _modeSetting.CurrentValue(_configuration) == EquipmentSuggestMode.Class))
                         {
                             _modeSetting.UpdateFilterConfiguration(_configuration, EquipmentSuggestMode.Class);
                         }
 
-                        if (ImGui.MenuItem("Tool/Weapon", "",
+                        if (ImGui.MenuItem(T("Tool/Weapon"), "",
                                 _modeSetting.CurrentValue(_configuration) == EquipmentSuggestMode.Tool))
                         {
                             _modeSetting.UpdateFilterConfiguration(_configuration, EquipmentSuggestMode.Tool);
@@ -148,20 +148,20 @@ public class EquipmentSuggestWindow : GenericWindow, IMenuWindow
                 {
                     if (menu)
                     {
-                        if (ImGui.MenuItem("Normal", "",
+                        if (ImGui.MenuItem(T("Normal"), "",
                                 _viewModeSetting.CurrentValue(_configuration) == EquipmentSuggestViewMode.Normal))
                         {
                             _viewModeSetting.UpdateFilterConfiguration(_configuration, EquipmentSuggestViewMode.Normal);
                         }
 
-                        if (ImGui.MenuItem("Expanded", "",
+                        if (ImGui.MenuItem(T("Expanded"), "",
                                 _viewModeSetting.CurrentValue(_configuration) == EquipmentSuggestViewMode.Expanded))
                         {
                             _viewModeSetting.UpdateFilterConfiguration(_configuration,
                                 EquipmentSuggestViewMode.Expanded);
                         }
 
-                        if (ImGui.MenuItem("Compact", "",
+                        if (ImGui.MenuItem(T("Compact"), "",
                                 _viewModeSetting.CurrentValue(_configuration) == EquipmentSuggestViewMode.Compact))
                         {
                             _viewModeSetting.UpdateFilterConfiguration(_configuration,
@@ -303,7 +303,7 @@ public class EquipmentSuggestWindow : GenericWindow, IMenuWindow
                         using var disabled = ImRaii.Disabled(activeCharacter == null);
                         ImGui.SetNextItemWidth(400);
                         using var color = ImRaii.PushColor(ImGuiCol.Text, new Vector4(0, 0, 0, 0));
-                        ImGui.LabelText("5Label", text);
+                        ImGui.LabelText(T("5Label"), text);
                         color.Pop();
                         if (ImGui.Button(text) && activeCharacter != null)
                         {
@@ -323,7 +323,7 @@ public class EquipmentSuggestWindow : GenericWindow, IMenuWindow
                         var classJob = _classJobField.CurrentValue(_config);
                         ImGui.SetNextItemWidth(400);
                         using var color = ImRaii.PushColor(ImGuiCol.Text, new Vector4(0, 0, 0, 0));
-                        ImGui.LabelText("6Label", text);
+                        ImGui.LabelText(T("6Label"), text);
                         color.Pop();
                         using var disabled = ImRaii.Disabled(classJob == 0 && _modeSetting.CurrentValue(_configuration) == EquipmentSuggestMode.Class);
                         if (ImGui.Button(text))
@@ -341,7 +341,7 @@ public class EquipmentSuggestWindow : GenericWindow, IMenuWindow
                                 if (tooltip.Success)
                                 {
                                     ImGui.Text(
-                                        "Hitting this will pick the highest iLvl items while also factoring in the relevant stats for the seleted class/item.");
+                                        T("Hitting this will pick the highest iLvl items while also factoring in the relevant stats for the seleted class/item."));
                                 }
                             }
                         }
@@ -354,7 +354,7 @@ public class EquipmentSuggestWindow : GenericWindow, IMenuWindow
                     if (child)
                     {
                         using var color = ImRaii.PushColor(ImGuiCol.Text, new Vector4(0, 0, 0, 0));
-                        ImGui.LabelText("SpinLabel", text);
+                        ImGui.LabelText(T("SpinLabel"), text);
                         if (_equipmentSuggestGrid.Value.IsLoading || _currentTask != null)
                         {
                             ImGui.SetCursorPosX(ImGui.GetCursorPosX() + 5 * ImGui.GetIO().FontGlobalScale);

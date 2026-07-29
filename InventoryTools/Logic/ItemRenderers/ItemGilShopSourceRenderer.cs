@@ -37,7 +37,7 @@ public class ItemGilShopUseRenderer : ItemGilShopSourceRenderer
             ? new List<string>()
             : shopSource.MapIds.Select(c => _mapSheet.GetRow(c).FormattedName)).Distinct().ToList();
 
-        ImGui.Text($"{allGilShops.Count} items available for purchase with gil in {maps.Count} zones");
+        ImGui.Text(TF($"{allGilShops.Count} items available for purchase with gil in {maps.Count} zones"));
     };
 
     public override RendererType RendererType => RendererType.Use;
@@ -72,7 +72,7 @@ public class ItemGilShopSourceRenderer : ItemInfoRenderer<ItemGilShopSource>
         var asSources = AsSource(sources);
         var firstItem = asSources[0];
 
-        ImGui.Text("Costs:");
+        ImGui.Text(T("Costs:"));
 
         using (ImRaii.PushIndent())
         {
@@ -86,7 +86,7 @@ public class ItemGilShopSourceRenderer : ItemInfoRenderer<ItemGilShopSource>
             if (firstItem.GilShopItem.Base.AchievementRequired.RowId != 0)
             {
                 ImGui.Text(
-                    $"Achievement Required: {firstItem.GilShopItem.Base.AchievementRequired.Value.Name.ExtractText()}");
+                    TF($"Achievement Required: {firstItem.GilShopItem.Base.AchievementRequired.Value.Name.ExtractText()}"));
             }
 
             foreach (var quest in firstItem.GilShopItem.Base.QuestRequired)
@@ -94,7 +94,7 @@ public class ItemGilShopSourceRenderer : ItemInfoRenderer<ItemGilShopSource>
                 if (quest.RowId != 0)
                 {
                     ImGui.Text(
-                        $"Quest Required: {quest.Value.Name.ExtractText()}");
+                        TF($"Quest Required: {quest.Value.Name.ExtractText()}"));
                 }
             }
         }
@@ -107,7 +107,7 @@ public class ItemGilShopSourceRenderer : ItemInfoRenderer<ItemGilShopSource>
         var asSource = AsSource(source);
         var maps = source.MapIds?.Select(c => _mapSheet.GetRow(c).FormattedName).ToList() ?? new List<string>();
 
-        ImGui.Text("Costs:");
+        ImGui.Text(T("Costs:"));
 
         using (ImRaii.PushIndent())
         {
@@ -121,7 +121,7 @@ public class ItemGilShopSourceRenderer : ItemInfoRenderer<ItemGilShopSource>
             if (asSource.GilShopItem.Base.AchievementRequired.RowId != 0)
             {
                 ImGui.Text(
-                    $"Achievement Required: {asSource.GilShopItem.Base.AchievementRequired.Value.Name.ExtractText()}");
+                    TF($"Achievement Required: {asSource.GilShopItem.Base.AchievementRequired.Value.Name.ExtractText()}"));
             }
 
             foreach (var quest in asSource.GilShopItem.Base.QuestRequired)
@@ -129,7 +129,7 @@ public class ItemGilShopSourceRenderer : ItemInfoRenderer<ItemGilShopSource>
                 if (quest.RowId != 0 && quest.IsValid)
                 {
                     ImGui.Text(
-                        $"Quest Required: {quest.Value.Name.ExtractText()}");
+                        TF($"Quest Required: {quest.Value.Name.ExtractText()}"));
                 }
             }
         }

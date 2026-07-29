@@ -40,18 +40,18 @@ public class TeamCraftImportWindow : GenericWindow
 
     public override void Draw()
     {
-        ImGui.Text("Import to Craft List: ");
+        ImGui.Text(T("Import to Craft List: "));
         ImGui.SameLine();
         ImGuiService.HelpMarker("Guide to importing lists.\r\n\r\n" +
                                 "Step 1. Open a list on Teamcraft with the items you wish to craft.\r\n\r\n" +
                                 "Step 2. Find the 'Items' \"Copy as Text\" button. You only want to copy the output items.\r\n\r\n" +
                                 "Step 3. Paste into the text box below in this window.\r\n\r\n" +
                                 "Step 4. Click import.");
-        ImGui.Text("Paste text here");
+        ImGui.Text(T("Paste text here"));
         ImGui.InputTextMultiline("###FinalItems", ref _importListItems, 10000000, new Vector2(ImGui.GetContentRegionAvail().X, 100));
 
 
-        if (ImGui.Button("Import"))
+        if (ImGui.Button(T("Import")))
         {
             var importedList = _importExportService.FromTCString(_importListItems ?? "");
             if (importedList is not null)
@@ -62,7 +62,7 @@ public class TeamCraftImportWindow : GenericWindow
 
         }
         ImGui.SameLine();
-        if (ImGui.Button("Cancel"))
+        if (ImGui.Button(T("Cancel")))
         {
             Close();
         }

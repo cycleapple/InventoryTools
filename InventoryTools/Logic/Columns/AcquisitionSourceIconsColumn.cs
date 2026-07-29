@@ -126,7 +126,7 @@ namespace InventoryTools.Logic.Columns
         public override void Setup(FilterConfiguration filterConfiguration, ColumnConfiguration columnConfiguration,
             int columnIndex)
         {
-            ImGui.TableSetupColumn(RenderName ?? Name, ImGuiTableColumnFlags.WidthFixed, Width, (uint)columnIndex);
+            ImGui.TableSetupColumn(T(RenderName ?? Name), ImGuiTableColumnFlags.WidthFixed, Width, (uint)columnIndex);
         }
 
         public override string CsvExport(ColumnConfiguration columnConfiguration, SearchResult searchResult)

@@ -33,10 +33,10 @@ public class OverlayServiceDebuggerPane : IDebugPane
         ImGui.Text($"Current State: {(OverlayService.LastState == null ? "No State" : "Has State")}");
         if (OverlayService.LastState != null)
         {
-            ImGui.Text($"Filter: {OverlayService.LastState.FilterConfiguration.Name}");
+            ImGui.Text(TF($"Filter: {OverlayService.LastState.FilterConfiguration.Name}"));
             ImGui.Text($"Should Highlight: {(OverlayService.LastState.ShouldHighlight ? "Yes" : "No")}");
-            ImGui.TextUnformatted($"Active Retainer ID: {_characterMonitor.ActiveRetainerId}");
-            ImGui.TextUnformatted($"Retainer List Open?: {_gameUiManager.IsWindowVisible(CriticalCommonLib.Services.Ui.WindowName.RetainerList)}");
+            ImGui.TextUnformatted(TF($"Active Retainer ID: {_characterMonitor.ActiveRetainerId}"));
+            ImGui.TextUnformatted(TF($"Retainer List Open?: {_gameUiManager.IsWindowVisible(CriticalCommonLib.Services.Ui.WindowName.RetainerList)}"));
             ImGui.Text($"Should Highlight Destination: {(OverlayService.LastState.ShouldHighlightDestination ? "Yes" : "No")}");
             ImGui.Text($"Invert Highlighting: {(OverlayService.LastState.InvertHighlighting ? "Yes" : "No")}");
             ImGui.Text($"Has Filter Result: {(OverlayService.LastState.HasFilterResult ? "Yes" : "No")}");
@@ -54,7 +54,7 @@ public class OverlayServiceDebuggerPane : IDebugPane
             ImGui.Text($"{(tabHighlights2.HasValue ? "Will Highlight Tab 2" : "No Highlight")}");
         }
 
-        ImGui.Text("Overlays: ");
+        ImGui.Text(T("Overlays: "));
         foreach (var overlay in OverlayService.Overlays)
         {
             ImGui.Text($"{overlay.GetType()}");
@@ -62,7 +62,7 @@ public class OverlayServiceDebuggerPane : IDebugPane
             ImGui.Text($"Should Draw: {(overlay.ShouldDraw ? "Yes" : "No")}");
         }
 
-        if (ImGui.CollapsingHeader("Current State:") && OverlayService.LastState != null)
+        if (ImGui.CollapsingHeader(T("Current State:")) && OverlayService.LastState != null)
         {
             Utils.PrintOutObject(OverlayService.LastState, 0, new List<string>());
             if (OverlayService.LastState.FilterResult != null)

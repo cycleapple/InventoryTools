@@ -437,22 +437,22 @@ namespace InventoryTools.Ui
                     {
                         if (menu)
                         {
-                            if (ImGui.MenuItem("Report a Issue"))
+                            if (ImGui.MenuItem(T("Report a Issue")))
                             {
                                 "https://github.com/Critical-Impact/AllaganMarket".OpenBrowser();
                             }
 
-                            if (ImGui.MenuItem("Changelog"))
+                            if (ImGui.MenuItem(T("Changelog")))
                             {
                                 MediatorService.Publish(new OpenGenericWindowMessage(typeof(ChangelogWindow)));
                             }
 
-                            if (ImGui.MenuItem("Help"))
+                            if (ImGui.MenuItem(T("Help")))
                             {
                                 MediatorService.Publish(new OpenGenericWindowMessage(typeof(HelpWindow)));
                             }
 
-                            if (ImGui.MenuItem("Enable Verbose Logging", "",
+                            if (ImGui.MenuItem(T("Enable Verbose Logging"), "",
                                     this._pluginLog.MinimumLogLevel == LogEventLevel.Verbose))
                             {
                                 if (this._pluginLog.MinimumLogLevel == LogEventLevel.Verbose)
@@ -465,12 +465,12 @@ namespace InventoryTools.Ui
                                 }
                             }
 
-                            if (ImGui.MenuItem("Ko-Fi"))
+                            if (ImGui.MenuItem(T("Ko-Fi")))
                             {
                                 "https://ko-fi.com/critical_impact".OpenBrowser();
                             }
 
-                            if (ImGui.MenuItem("Close"))
+                            if (ImGui.MenuItem(T("Close")))
                             {
                                 this.IsOpen = false;
                             }
@@ -483,14 +483,14 @@ namespace InventoryTools.Ui
                         {
                             var hasNewFeatures = this._configurationWizardService.HasNewFeatures;
                             using var disabled = ImRaii.Disabled(!hasNewFeatures);
-                            if (ImGui.MenuItem("Configure New Features"))
+                            if (ImGui.MenuItem(T("Configure New Features")))
                             {
                                 MediatorService.Publish(new OpenGenericWindowMessage(typeof(ConfigurationWizard)));
                             }
 
                             disabled.Dispose();
 
-                            if (ImGui.MenuItem("Reconfigure All Features"))
+                            if (ImGui.MenuItem(T("Reconfigure All Features")))
                             {
                                 this._configurationWizardService.ClearFeaturesSeen();
                                 MediatorService.Publish(new OpenGenericWindowMessage(typeof(ConfigurationWizard)));
@@ -663,7 +663,7 @@ namespace InventoryTools.Ui
                     }
 
                     ImGui.NewLine();
-                    ImGui.TextUnformatted("Item Lists");
+                    ImGui.TextUnformatted(T("Item Lists"));
                     ImGui.Separator();
 
                     var filterIndex = count;
@@ -711,7 +711,7 @@ namespace InventoryTools.Ui
                     }
 
                     _addFilterMenu.Draw();
-                    ImGuiUtil.HoverTooltip("Add a new filter");
+                    ImGuiUtil.HoverTooltip(T("Add a new filter"));
 
                     ImGui.SetCursorPosY(height - 24 * ImGui.GetIO().FontGlobalScale);
                     ImGui.SetCursorPosX(26 * ImGui.GetIO().FontGlobalScale);
@@ -722,7 +722,7 @@ namespace InventoryTools.Ui
                     }
 
                     _addSampleMenu.Draw();
-                    ImGuiUtil.HoverTooltip("Add a sample filter");
+                    ImGuiUtil.HoverTooltip(T("Add a sample filter"));
 
                     var width = ImGui.GetWindowSize().X;
                     width -= 24 * ImGui.GetIO().FontGlobalScale;
@@ -750,7 +750,7 @@ namespace InventoryTools.Ui
                     _wizardMenu.Draw();
 
 
-                    ImGuiUtil.HoverTooltip("Start configuration wizard.");
+                    ImGuiUtil.HoverTooltip(T("Start configuration wizard."));
                 }
             }
         }

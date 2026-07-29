@@ -33,7 +33,7 @@ public class ItemFccShopUseRenderer : ItemFccShopSourceRenderer
             ? new List<string>()
             : shopSource.MapIds.Select(c => MapSheet.GetRow(c).FormattedName)).Distinct().ToList();
 
-        ImGui.Text("Items that can be purchased:");
+        ImGui.Text(T("Items that can be purchased:"));
 
         using (ImRaii.PushIndent())
         {
@@ -77,7 +77,7 @@ public class ItemFccShopSourceRenderer : ItemInfoRenderer<ItemFccShopSource>
 
         using (ImRaii.PushIndent())
         {
-            ImGui.Text($"Cost: Company Credit x {asSources.First().FccShopListing.Cost.Count}");
+            ImGui.Text(TF($"Cost: Company Credit x {asSources.First().FccShopListing.Cost.Count}"));
         }
 
         DrawMaps(sources);
@@ -89,7 +89,7 @@ public class ItemFccShopSourceRenderer : ItemInfoRenderer<ItemFccShopSource>
 
         using (ImRaii.PushIndent())
         {
-            ImGui.Text($"Cost: Company Credit x {asSource.FccShopListing.Cost.Count}");
+            ImGui.Text(TF($"Cost: Company Credit x {asSource.FccShopListing.Cost.Count}"));
         }
 
         DrawMaps(source);

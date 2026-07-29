@@ -34,11 +34,11 @@ public abstract class ItemHouseSourceRenderer<T> : ItemInfoRenderer<T> where T :
         var setName = asSource.HousingPreset.Value.Singular.ExtractText();
         if (setName == string.Empty)
         {
-            ImGui.Text("Not default in any house.");
+            ImGui.Text(T("Not default in any house."));
         }
         else
         {
-            ImGui.Text("Default in " + setName);
+            ImGui.Text(T("Default in ") + setName);
         }
     };
 

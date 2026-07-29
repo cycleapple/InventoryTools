@@ -121,7 +121,7 @@ namespace InventoryTools.Logic.Columns.Abstract
             {
                 imGuiTableColumnFlags |= ImGuiTableColumnFlags.NoHide;
             }
-            ImGui.TableSetupColumn(columnConfiguration.Name ?? (RenderName ?? Name), imGuiTableColumnFlags, Width, (uint)columnIndex);
+            ImGui.TableSetupColumn(columnConfiguration.Name ?? T(RenderName ?? Name), imGuiTableColumnFlags, Width, (uint)columnIndex);
         }
         public virtual IFilterEvent? DrawFooterFilter(ColumnConfiguration columnConfiguration, FilterTable filterTable)
         {

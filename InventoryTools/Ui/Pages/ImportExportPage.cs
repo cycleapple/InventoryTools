@@ -41,7 +41,7 @@ namespace InventoryTools.Ui.Pages
         public override List<MessageBase>? Draw()
         {
             ImGui.PushID("ImportSection");
-            if (ImGui.CollapsingHeader("Export", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+            if (ImGui.CollapsingHeader(T("Export"), ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
             {
                 var filterConfigurations = _listService.Lists;
                 ImGui.PushStyleVar(ImGuiStyleVar.CellPadding, new Vector2(5, 5) * ImGui.GetIO().FontGlobalScale);
@@ -62,7 +62,7 @@ namespace InventoryTools.Ui.Pages
                         {
                             ImGui.TableNextRow();
                             ImGui.TableNextColumn();
-                            ImGui.TextUnformatted("No lists created yet!");
+                            ImGui.TextUnformatted(T("No lists created yet!"));
                             ImGui.TableNextColumn();
                             ImGui.TableNextColumn();
                         }
@@ -101,16 +101,16 @@ namespace InventoryTools.Ui.Pages
                 ImGui.PopStyleVar();
             }
 
-            if (ImGui.CollapsingHeader("Import", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+            if (ImGui.CollapsingHeader(T("Import"), ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
             {
                 var importData = ImportData;
-                if (ImGui.InputTextMultiline("Paste list here",ref importData, 10000, new Vector2(400, 200) * ImGui.GetIO().FontGlobalScale))
+                if (ImGui.InputTextMultiline(T("Paste list here"),ref importData, 10000, new Vector2(400, 200) * ImGui.GetIO().FontGlobalScale))
                 {
                     ImportData = importData;
                     ImportFailed = false;
                 }
 
-                if (ImGui.Button("Import##ImportBtn"))
+                if (ImGui.Button(T("Import##ImportBtn")))
                 {
                     if (ImportData == "")
                     {

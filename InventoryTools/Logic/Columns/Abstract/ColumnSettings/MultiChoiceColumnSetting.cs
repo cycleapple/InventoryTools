@@ -51,7 +51,7 @@ public abstract class MultiChoiceColumnSetting<T> : ColumnSetting<List<T>?>
             : Name;
 
         ImGui.SetNextItemWidth(InputSize);
-        var currentSearchCategory = activeChoices != null ? string.Join(", ", activeChoices.Select(activeChoice => GetFormattedChoice(configuration, activeChoice))) : Name;
+        var currentSearchCategory = activeChoices != null ? string.Join(", ", activeChoices.Select(activeChoice => T(GetFormattedChoice(configuration, activeChoice)))) : T(Name);
         using (var combo = ImRaii.Combo("##" + Key + "Combo", currentSearchCategory))
         {
             if (combo.Success)
@@ -118,7 +118,7 @@ public abstract class MultiChoiceColumnSetting<T> : ColumnSetting<List<T>?>
 
                 if (!string.IsNullOrWhiteSpace(EmptyText))
                 {
-                    if (ImGui.Selectable(EmptyText, displayText == ""))
+                    if (ImGui.Selectable(T(EmptyText), displayText == ""))
                     {
                         ResetFilter(configuration);
                         configuration.IsDirty = true;
@@ -129,7 +129,7 @@ public abstract class MultiChoiceColumnSetting<T> : ColumnSetting<List<T>?>
                 for (var i = 0; i < filteredChoices.Count; i++)
                 {
                     var item = filteredChoices[i];
-                    var label = GetFormattedChoice(configuration, item).Replace("\u0002\u001F\u0001\u0003", "-");
+                    var label = T(GetFormattedChoice(configuration, item)).Replace("\u0002\u001F\u0001\u0003", "-");
                     if (string.IsNullOrWhiteSpace(label))
                         continue;
 
@@ -157,11 +157,11 @@ public abstract class MultiChoiceColumnSetting<T> : ColumnSetting<List<T>?>
         }
 
         ImGui.SameLine();
-        ImGuiService.HelpMarker(HelpText);
+        ImGuiService.HelpMarker(T(HelpText));
         if (HasValueSet(configuration) && ShowReset)
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button(T("Reset##") + Key + "Reset"))
             {
                 ResetFilter(configuration);
                 success = true;
@@ -199,20 +199,20 @@ public abstract class MultiChoiceColumnSetting<T> : ColumnSetting<List<T>?>
         if (HasValueSet(configuration))
         {
             ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.HealerGreen);
-            ImGui.LabelText("##" + Key + "Label", Name + ":");
+            ImGui.LabelText("##" + Key + "Label", T(Name) + ":");
             ImGui.PopStyleColor();
         }
         else
         {
-            ImGui.LabelText("##" + Key + "Label", Name + ":");
+            ImGui.LabelText("##" + Key + "Label", T(Name) + ":");
         }
 
         var choices = GetChoices(configuration);
         var activeChoices = CurrentValue(configuration);
 
         var displayText = activeChoices != null
-            ? string.Join(", ", activeChoices.Select(c => GetFormattedChoice(configuration, c)))
-            : EmptyText;
+            ? string.Join(", ", activeChoices.Select(c => T(GetFormattedChoice(configuration, c))))
+            : T(EmptyText);
 
         ImGui.SameLine();
         ImGui.SetNextItemWidth(InputSize);
@@ -222,7 +222,7 @@ public abstract class MultiChoiceColumnSetting<T> : ColumnSetting<List<T>?>
             {
                 if (!string.IsNullOrWhiteSpace(EmptyText))
                 {
-                    if (ImGui.Selectable(EmptyText, displayText == ""))
+                    if (ImGui.Selectable(T(EmptyText), displayText == ""))
                     {
                         ResetFilter(configuration);
                         configuration.IsDirty = true;
@@ -232,7 +232,7 @@ public abstract class MultiChoiceColumnSetting<T> : ColumnSetting<List<T>?>
 
                 foreach (var item in choices)
                 {
-                    var text = GetFormattedChoice(configuration, item).Replace("\u0002\u001F\u0001\u0003", "-");
+                    var text = T(GetFormattedChoice(configuration, item)).Replace("\u0002\u001F\u0001\u0003", "-");
                     if (string.IsNullOrWhiteSpace(text))
                         continue;
 
@@ -248,11 +248,11 @@ public abstract class MultiChoiceColumnSetting<T> : ColumnSetting<List<T>?>
         }
 
         ImGui.SameLine();
-        ImGuiService.HelpMarker(HelpText);
+        ImGuiService.HelpMarker(T(HelpText));
         if (HasValueSet(configuration) && ShowReset)
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button(T("Reset##") + Key + "Reset"))
             {
                 ResetFilter(configuration);
                 success = true;

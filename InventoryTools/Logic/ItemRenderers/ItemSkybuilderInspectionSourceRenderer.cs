@@ -22,8 +22,8 @@ public class ItemSkybuilderInspectionUseRenderer : ItemSkybuilderInspectionSourc
     public override Action<ItemSource> DrawTooltip => source =>
     {
         var asSource = AsSource(source);
-        ImGui.Text($"Reward: {asSource.Item.NameString}");
-        ImGui.Text($"Required: {asSource.InspectionData.AmountRequired}");
+        ImGui.Text(TF($"Reward: {asSource.Item.NameString}"));
+        ImGui.Text(TF($"Required: {asSource.InspectionData.AmountRequired}"));
     };
 }
 
@@ -47,7 +47,7 @@ public class ItemSkybuilderInspectionSourceRenderer : ItemInfoRenderer<ItemSkybu
     {
         var asSource = AsSource(source);
         ImGui.Text($"Item Required: {asSource.CostItem?.NameString ?? "Unknown Item"}");
-        ImGui.Text($"Amount Required: {asSource.InspectionData.AmountRequired}");
+        ImGui.Text(TF($"Amount Required: {asSource.InspectionData.AmountRequired}"));
     };
 
     public override Func<ItemSource, string> GetName => source =>

@@ -129,7 +129,7 @@ namespace InventoryTools.Logic.Filters
         {
             base.DrawButtons(configuration, item, index);
             ImGui.SameLine();
-            if (ImGui.Button("Edit##Column" + index))
+            if (ImGui.Button(T("Edit##Column") + index))
             {
                 EditItem(configuration, item.Key);
             }
@@ -159,7 +159,7 @@ namespace InventoryTools.Logic.Filters
                     var groupedItems = GetGroupedItems(configuration);
                     if (_selectedColumnKey == "")
                     {
-                        ImGui.Text("Add Column");
+                        ImGui.Text(T("Add Column"));
                         ImGui.Separator();
                         var searchString = SearchString;
                         ImGui.InputText("##ItemSearch", ref searchString, 50);
@@ -171,7 +171,7 @@ namespace InventoryTools.Logic.Filters
                         ImGui.Separator();
                         if (_searchString == "")
                         {
-                            ImGui.TextUnformatted("Start typing to search...");
+                            ImGui.TextUnformatted(T("Start typing to search..."));
                         }
 
                         ImGui.Separator();
@@ -227,14 +227,14 @@ namespace InventoryTools.Logic.Filters
                                     {
                                         ImGui.SameLine();
                                         ImGui.Image(ImGuiService.GetIconTexture(Icons.SproutIcon).Handle, new Vector2(16,16));
-                                        ImGuiUtil.HoverTooltip("Default Column");
+                                        ImGuiUtil.HoverTooltip(T("Default Column"));
                                     }
 
                                     if (column.Value.IsConfigurable)
                                     {
                                         ImGui.SameLine();
                                         ImGui.Image(ImGuiService.GetIconTexture(Icons.WrenchIcon).Handle, new Vector2(16,16));
-                                        ImGuiUtil.HoverTooltip("Configurable");
+                                        ImGuiUtil.HoverTooltip(T("Configurable"));
                                     }
 
                                     if (pushColor != null)
@@ -248,7 +248,7 @@ namespace InventoryTools.Logic.Filters
                                         ImGui.PushTextWrapPos();
                                         ImGui.Text(column.Value.HelpText);
                                         ImGui.PopTextWrapPos();
-                                        if (ImGui.Button("Add"))
+                                        if (ImGui.Button(T("Add")))
                                         {
                                             _selectedColumnName = column.Value.Name;
                                             _selectedColumnHelp = column.Value.HelpText;
@@ -338,7 +338,7 @@ namespace InventoryTools.Logic.Filters
                         }
                         ImGui.SameLine();
                         ImGui.SetCursorPosX(posX - ImGui.GetStyle().ItemSpacing.X - 50);
-                        if (ImGui.Button("Cancel", new Vector2(50, 20)))
+                        if (ImGui.Button(T("Cancel"), new Vector2(50, 20)))
                         {
                             _selectedColumnName = "";
                             _selectedColumnKey = "";
@@ -358,7 +358,7 @@ namespace InventoryTools.Logic.Filters
             {
                 if (table.Success)
                 {
-                    ImGui.Text("Current Columns:");
+                    ImGui.Text(T("Current Columns:"));
                     ImGui.Separator();
                     DrawTable(configuration);
                 }

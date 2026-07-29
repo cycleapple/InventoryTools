@@ -28,17 +28,17 @@ public abstract class ItemFieldOpCofferSourceRenderer<T> : ItemInfoRenderer<T> w
     public override Action<ItemSource> DrawTooltip => source =>
     {
         var asSource = AsSource(source);
-        ImGui.Text("Drops from " + asSource.CofferType + " coffer");
+        ImGui.Text(T("Drops from ") + asSource.CofferType + " coffer");
         if (asSource.Min != null && asSource.Max != null)
         {
             ImGui.SameLine();
             if (asSource.Min == asSource.Max)
             {
-                ImGui.Text("(Drops 1)");
+                ImGui.Text(T("(Drops 1)"));
             }
             else
             {
-                ImGui.Text("(Drops " + asSource.Min.Value + " - " + asSource.Max.Value + ")");
+                ImGui.Text(T("(Drops ") + asSource.Min.Value + " - " + asSource.Max.Value + ")");
             }
         }
 

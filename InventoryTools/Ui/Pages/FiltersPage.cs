@@ -116,7 +116,7 @@ namespace InventoryTools.Ui.Pages
         {
             var messages = new List<MessageBase>();
             var filterConfigurations = _listService.Lists.Where(c => c.FilterType != FilterType.CraftFilter).ToList();
-            if (ImGui.CollapsingHeader("Item Lists", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+            if (ImGui.CollapsingHeader(T("Item Lists"), ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
             {
                 ImGui.PushStyleVar(ImGuiStyleVar.CellPadding, new Vector2(5, 5) * ImGui.GetIO().FontGlobalScale);
                 using (var table = ImRaii.Table("FilterConfigTable", 4, ImGuiTableFlags.BordersV |
@@ -137,7 +137,7 @@ namespace InventoryTools.Ui.Pages
                         {
                             ImGui.TableNextRow();
                             ImGui.TableNextColumn();
-                            ImGui.TextUnformatted("No item lists created yet!");
+                            ImGui.TextUnformatted(T("No item lists created yet!"));
                             ImGui.TableNextColumn();
                             ImGui.TableNextColumn();
                             ImGui.TableNextColumn();

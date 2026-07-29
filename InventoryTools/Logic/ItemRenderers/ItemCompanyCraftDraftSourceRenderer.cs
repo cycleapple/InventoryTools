@@ -32,7 +32,7 @@ public class ItemCompanyCraftDraftSourceRenderer : ItemInfoRenderer<ItemCompanyC
     public override Action<ItemSource> DrawTooltip => source =>
     {
         var asSource = AsSource(source);
-        ImGui.Text($"Name: {asSource.CompanyCraftDraft.Value.Name.ExtractText()}");
+        ImGui.Text(TF($"Name: {asSource.CompanyCraftDraft.Value.Name.ExtractText()}"));
 
         DrawItems("Possible Reward Items: ", asSource.RewardItems);
         DrawItems("Ingredients: ", asSource.CostItems);

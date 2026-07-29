@@ -50,11 +50,11 @@ public class ContextMenuItemSearchScopeSetting : Setting<List<InventorySearchSco
         }
 
         ImGui.SameLine();
-        ImGuiService.HelpMarker(HelpText, Image, ImageSize);
+        ImGuiService.HelpMarker(T(HelpText), Image, ImageSize);
         if (disableReset != true && HasValueSet(configuration))
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button(T("Reset##") + Key + "Reset"))
             {
                 Reset(configuration);
             }

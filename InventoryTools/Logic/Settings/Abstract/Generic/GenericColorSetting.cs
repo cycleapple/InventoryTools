@@ -30,11 +30,11 @@ public abstract class GenericColorSetting : Setting<Vector4?>
     {
         var value = CurrentValue(configuration);
 
-        ImGui.LabelText("##" + Key + "Label", customName ?? Name);
+        ImGui.LabelText("##" + Key + "Label", customName ?? T(Name));
 
         var enabled = value != null;
 
-        if (ImGui.Checkbox("Enable##"+Key+"Boolean", ref enabled))
+        if (ImGui.Checkbox(T("Enable##")+Key+"Boolean", ref enabled))
         {
             if (value == null)
             {
@@ -58,11 +58,11 @@ public abstract class GenericColorSetting : Setting<Vector4?>
             }
         }
         ImGui.SameLine();
-        ImGuiService.HelpMarker(HelpText, Image, ImageSize);
+        ImGuiService.HelpMarker(T(HelpText), Image, ImageSize);
         if (disableReset != true && HasValueSet(configuration))
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button(T("Reset##") + Key + "Reset"))
             {
                 Reset(configuration);
             }

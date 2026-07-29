@@ -31,7 +31,7 @@ public class ItemGCShopUseRenderer : ItemGCShopSourceRenderer
     {
         var asSources = AsSource(sources);
 
-        ImGui.Text("Items that can be purchased:");
+        ImGui.Text(T("Items that can be purchased:"));
 
         using (ImRaii.PushIndent())
         {
@@ -79,13 +79,13 @@ public class ItemGCShopSourceRenderer : ItemInfoRenderer<ItemGCShopSource>
 
         ImGui.Image(_textureProvider.GetFromGameIcon(new GameIconLookup(asSource.CostItem!.Icon)).GetWrapOrEmpty().Handle, new Vector2(18, 18) * ImGui.GetIO().FontGlobalScale);
         ImGui.SameLine();
-        ImGui.Text($"Cost: {asSource.CostItem.NameString} x {asSource.GCScripShopItem.Base.CostGCSeals}");
+        ImGui.Text(TF($"Cost: {asSource.CostItem.NameString} x {asSource.GCScripShopItem.Base.CostGCSeals}"));
         if (asSource.GCScripShopItem.Base.RequiredGrandCompanyRank.IsValid)
         {
             var genericRank = _rankSheet
                 .GetRow(asSource.GCScripShopItem.Base.RequiredGrandCompanyRank.RowId).NameRank.ExtractText()
                 .ToTitleCase();
-            ImGui.Text($"Rank Required: " + genericRank);
+            ImGui.Text(TF($"Rank Required: ") + genericRank);
         }
 
         DrawMaps(source);

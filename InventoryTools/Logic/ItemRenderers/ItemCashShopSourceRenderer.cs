@@ -29,11 +29,11 @@ public class ItemCashShopSourceRenderer : ItemInfoRenderer<ItemCashShopSource>
     {
         var asSource = AsSource(source);
         var priceUsd = asSource.PriceUsd.ToString("C2", CultureInfo.GetCultureInfo("en-US"));
-        ImGui.TextUnformatted($"Price(USD): {priceUsd}");
+        ImGui.TextUnformatted(TF($"Price(USD): {priceUsd}"));
         if (asSource.FittingShopItemSetRow?.Items.Count > 1)
         {
-            ImGui.TextUnformatted($"Set: {asSource.FittingShopItemSetRow.Base.Unknown6.ExtractText()}");
-            ImGui.TextUnformatted($"Contains:");
+            ImGui.TextUnformatted(TF($"Set: {asSource.FittingShopItemSetRow.Base.Unknown6.ExtractText()}"));
+            ImGui.TextUnformatted(TF($"Contains:"));
             using (ImRaii.PushIndent())
             {
                 foreach (var item in asSource.FittingShopItemSetRow.Items)

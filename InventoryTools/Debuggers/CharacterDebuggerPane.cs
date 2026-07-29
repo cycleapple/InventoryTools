@@ -102,56 +102,56 @@ public class CharacterDebuggerPane : DebugLogPane
 
     public override unsafe void DrawInfo()
     {
-        if (ImGui.CollapsingHeader("Session / Active State"))
+        if (ImGui.CollapsingHeader(T("Session / Active State")))
         {
-            ImGui.TextUnformatted($"Is Logged In: {_characterMonitor.IsLoggedIn}");
-            ImGui.TextUnformatted($"Local Content ID: {_characterMonitor.LocalContentId}");
-            ImGui.TextUnformatted($"Internal Character ID: {_characterMonitor.InternalCharacterId}");
+            ImGui.TextUnformatted(TF($"Is Logged In: {_characterMonitor.IsLoggedIn}"));
+            ImGui.TextUnformatted(TF($"Local Content ID: {_characterMonitor.LocalContentId}"));
+            ImGui.TextUnformatted(TF($"Internal Character ID: {_characterMonitor.InternalCharacterId}"));
 
             ImGui.Separator();
-            ImGui.TextUnformatted("Active Character:");
+            ImGui.TextUnformatted(T("Active Character:"));
             ImGui.TextUnformatted(_characterMonitor.ActiveCharacter != null
                 ? $"{_characterMonitor.ActiveCharacter.Name} ({_characterMonitor.ActiveCharacterId})"
                 : "<none>");
 
-            ImGui.TextUnformatted("Active Retainer:");
+            ImGui.TextUnformatted(T("Active Retainer:"));
             ImGui.TextUnformatted(_characterMonitor.ActiveRetainer != null
                 ? $"{_characterMonitor.ActiveRetainer.Name} ({_characterMonitor.ActiveRetainerId})"
                 : "<none>");
 
-            ImGui.TextUnformatted("Active Free Company:");
+            ImGui.TextUnformatted(T("Active Free Company:"));
             ImGui.TextUnformatted(_characterMonitor.ActiveFreeCompany != null
                 ? $"{_characterMonitor.ActiveFreeCompany.Name} ({_characterMonitor.ActiveFreeCompanyId})"
                 : "<none>");
         }
 
-        if (ImGui.CollapsingHeader("Housing"))
+        if (ImGui.CollapsingHeader(T("Housing")))
         {
-            ImGui.TextUnformatted($"Active House ID: {_characterMonitor.ActiveHouseId}");
-            ImGui.TextUnformatted($"Cached Ward Id: {_characterMonitor.InternalWardId}");
-            ImGui.TextUnformatted($"Cached Plot Id: {_characterMonitor.InternalPlotId}");
-            ImGui.TextUnformatted($"Cached Division Id: {_characterMonitor.InternalDivisionId}");
-            ImGui.TextUnformatted($"Cached Room Id: {_characterMonitor.InternalRoomId}");
-            ImGui.TextUnformatted($"Cached House Id: {_characterMonitor.InternalHouseId}");
-            ImGui.TextUnformatted($"Territory Type Id: {_characterMonitor.CorrectedTerritoryTypeId}");
+            ImGui.TextUnformatted(TF($"Active House ID: {_characterMonitor.ActiveHouseId}"));
+            ImGui.TextUnformatted(TF($"Cached Ward Id: {_characterMonitor.InternalWardId}"));
+            ImGui.TextUnformatted(TF($"Cached Plot Id: {_characterMonitor.InternalPlotId}"));
+            ImGui.TextUnformatted(TF($"Cached Division Id: {_characterMonitor.InternalDivisionId}"));
+            ImGui.TextUnformatted(TF($"Cached Room Id: {_characterMonitor.InternalRoomId}"));
+            ImGui.TextUnformatted(TF($"Cached House Id: {_characterMonitor.InternalHouseId}"));
+            ImGui.TextUnformatted(TF($"Territory Type Id: {_characterMonitor.CorrectedTerritoryTypeId}"));
 
             var hm = HousingManager.Instance();
             if (hm != null)
             {
                 if (hm->OutdoorTerritory != null)
-                    ImGui.TextUnformatted($"Outdoor HouseId: {hm->OutdoorTerritory->HouseId.Id}");
+                    ImGui.TextUnformatted(TF($"Outdoor HouseId: {hm->OutdoorTerritory->HouseId.Id}"));
                 if (hm->IndoorTerritory != null)
-                    ImGui.TextUnformatted($"Indoor HouseId: {hm->IndoorTerritory->HouseId.Id}");
+                    ImGui.TextUnformatted(TF($"Indoor HouseId: {hm->IndoorTerritory->HouseId.Id}"));
                 if (hm->CurrentTerritory != null)
-                    ImGui.TextUnformatted($"Current Territory: {(ulong)hm->CurrentTerritory:X}");
+                    ImGui.TextUnformatted(TF($"Current Territory: {(ulong)hm->CurrentTerritory:X}"));
             }
 
             ImGui.Separator();
-            ImGui.TextUnformatted("Owned Houses:");
+            ImGui.TextUnformatted(T("Owned Houses:"));
             foreach (var id in _characterMonitor.GetOwnedHouseIds())
                 ImGui.BulletText(id.ToString());
 
-            ImGui.TextUnformatted("Has Housing Permission: " +
+            ImGui.TextUnformatted(T("Has Housing Permission: ") +
                 (_characterMonitor.InternalHasHousePermission ||
                  _characterMonitor.GetOwnedHouseIds().Contains(_characterMonitor.InternalHouseId)
                     ? "Yes"
@@ -161,19 +161,19 @@ public class CharacterDebuggerPane : DebugLogPane
         //
         // Worlds
         //
-        if (ImGui.CollapsingHeader("Worlds"))
+        if (ImGui.CollapsingHeader(T("Worlds")))
         {
             foreach (var wid in _characterMonitor.GetWorldIds())
                 ImGui.BulletText($"World {wid}");
         }
 
-        if (ImGui.CollapsingHeader("Characters"))
+        if (ImGui.CollapsingHeader(T("Characters")))
         {
             foreach (var kv in _characterMonitor.Characters)
                 ImGui.BulletText($"{kv.Key}: {kv.Value.Name}");
         }
 
-        if (ImGui.CollapsingHeader("Retainers"))
+        if (ImGui.CollapsingHeader(T("Retainers")))
         {
             using (var table = ImRaii.Table("retainerTable", 6))
             {
@@ -216,7 +216,7 @@ public class CharacterDebuggerPane : DebugLogPane
             }
         }
 
-        if (ImGui.CollapsingHeader("Character Objects"))
+        if (ImGui.CollapsingHeader(T("Character Objects")))
         {
             foreach (var kv in _characterMonitor.Characters)
             {
@@ -232,13 +232,13 @@ public class CharacterDebuggerPane : DebugLogPane
             }
         }
 
-        if (ImGui.CollapsingHeader("Acquired Items"))
+        if (ImGui.CollapsingHeader(T("Acquired Items")))
         {
             foreach (var characterPair in _configuration.AcquiredItems)
             {
                 var character = _characterMonitor.GetCharacterById(characterPair.Key);
                 ImGui.TextUnformatted(character?.FormattedName ?? "Unknown Character");
-                ImGui.Text($"{characterPair.Value.Count} unlocked items");
+                ImGui.Text(TF($"{characterPair.Value.Count} unlocked items"));
             }
         }
     }

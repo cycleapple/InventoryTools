@@ -156,22 +156,22 @@ namespace InventoryTools.Logic.Columns
             if (itemHovered || ImGui.IsItemHovered(ImGuiHoveredFlags.None))
             {
                 using var tt = ImRaii.Tooltip();
-                ImGui.Text("Ingredient Breakdown:");
-                ImGui.TextUnformatted("Amount Originally Required: " + searchResult.CraftItem.QuantityRequired);
-                ImGui.TextUnformatted("Amount Required: " + searchResult.CraftItem.QuantityNeededPreUpdate);
-                ImGui.TextUnformatted("Amount in Inventory: " + searchResult.CraftItem.QuantityReady);
-                ImGui.TextUnformatted("Amount to Retrieve: " + searchResult.CraftItem.QuantityAvailable);
+                ImGui.Text(T("Ingredient Breakdown:"));
+                ImGui.TextUnformatted(T("Amount Originally Required: ") + searchResult.CraftItem.QuantityRequired);
+                ImGui.TextUnformatted(T("Amount Required: ") + searchResult.CraftItem.QuantityNeededPreUpdate);
+                ImGui.TextUnformatted(T("Amount in Inventory: ") + searchResult.CraftItem.QuantityReady);
+                ImGui.TextUnformatted(T("Amount to Retrieve: ") + searchResult.CraftItem.QuantityAvailable);
                 ImGui.Separator();
-                ImGui.TextUnformatted("Amount Missing: " + searchResult.CraftItem.QuantityMissingOverall);
+                ImGui.TextUnformatted(T("Amount Missing: ") + searchResult.CraftItem.QuantityMissingOverall);
                 if (searchResult.Item.CanBeCrafted)
                 {
-                    ImGui.TextUnformatted("Amount Craftable: " + searchResult.CraftItem.QuantityCanCraft);
+                    ImGui.TextUnformatted(T("Amount Craftable: ") + searchResult.CraftItem.QuantityCanCraft);
                     if (searchResult.CraftItem.Yield != 1)
                     {
                         ImGui.Separator();
-                        ImGui.TextUnformatted("Craft Operations Required: " +
+                        ImGui.TextUnformatted(T("Craft Operations Required: ") +
                                               searchResult.CraftItem.QuantityNeeded / searchResult.CraftItem.Yield);
-                        ImGui.TextUnformatted("Recipe Yield: " + searchResult.CraftItem.Yield);
+                        ImGui.TextUnformatted(T("Recipe Yield: ") + searchResult.CraftItem.Yield);
                     }
                 }
 
@@ -179,7 +179,7 @@ namespace InventoryTools.Logic.Columns
                 if (searchResult.CraftItem.Recipe != null)
                 {
                     ImGui.Separator();
-                    ImGui.TextUnformatted("Ingredients: ");
+                    ImGui.TextUnformatted(T("Ingredients: "));
                     using (ImRaii.PushIndent())
                     {
                         foreach (var ingredient in searchResult.CraftItem.Recipe.IngredientCounts)

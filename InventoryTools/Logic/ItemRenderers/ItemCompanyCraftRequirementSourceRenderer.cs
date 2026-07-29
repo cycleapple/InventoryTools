@@ -37,7 +37,7 @@ public class ItemCompanyCraftRequirementSourceRenderer : ItemInfoRenderer<ItemCo
     public override Action<ItemSource> DrawTooltip => source =>
     {
         var asSource = AsSource(source);
-        ImGui.TextUnformatted($"Ingredient of Craft Recipe:");
+        ImGui.TextUnformatted(TF($"Ingredient of Craft Recipe:"));
         using (ImRaii.PushIndent())
         {
             ImGui.Image(_textureProvider.GetFromGameIcon(new GameIconLookup(asSource.Item.Icon)).GetWrapOrEmpty().Handle, new Vector2(16,16));
@@ -50,7 +50,7 @@ public class ItemCompanyCraftRequirementSourceRenderer : ItemInfoRenderer<ItemCo
     {
         var asSource = AsSource(source);
         asSource = asSource.DistinctBy(c => c.Item.RowId).ToList();
-        ImGui.TextUnformatted($"Ingredient of Craft Recipe:");
+        ImGui.TextUnformatted(TF($"Ingredient of Craft Recipe:"));
         using (ImRaii.PushIndent())
         {
             foreach (var row in asSource)

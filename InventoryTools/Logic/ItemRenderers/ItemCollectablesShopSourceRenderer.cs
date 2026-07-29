@@ -33,7 +33,7 @@ public class ItemCollectablesShopUseRenderer : ItemCollectablesShopSourceRendere
             ? new List<string>()
             : shopSource.MapIds.Select(c => MapSheet.GetRow(c).FormattedName)).Distinct().ToList();
 
-        ImGui.Text("Items that can be purchased:");
+        ImGui.Text(T("Items that can be purchased:"));
 
         using (ImRaii.PushIndent())
         {

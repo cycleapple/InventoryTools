@@ -18,6 +18,6 @@ public class WindowServiceDebuggerPane : IDebugPane
     public string Name => "Window Service";
     public void Draw()
     {
-        ImGui.Text($"Filter Window Open: {WindowService.HasFilterWindowOpen}");
+        ImGui.Text(TF($"Filter Window Open: {WindowService.HasFilterWindowOpen}"));
     }
 }

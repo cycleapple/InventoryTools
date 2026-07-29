@@ -36,7 +36,7 @@ public class ListServiceDebuggerPane : IDebugPane
             ImGui.Text($"{list.Name}:");
             ImGui.Text($"{(list.Active ? "Active" : "Not Active")}");
             ImGui.SameLine();
-            if (ImGui.Button("Request Refresh"))
+            if (ImGui.Button(T("Request Refresh")))
             {
                 _mediatorService.Publish(new RequestListUpdateMessage(list));
             }

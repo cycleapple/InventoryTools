@@ -12,10 +12,10 @@ public class LayerDebuggerPane : IDebugPane
         var activeLayout = LayoutWorld.Instance()->ActiveLayout;
         if (activeLayout != null)
         {
-            ImGui.TextUnformatted($"Level ID: {activeLayout->LevelId}");
-            ImGui.TextUnformatted($"ID: {activeLayout->Id}");
-            ImGui.TextUnformatted($"Type: {activeLayout->Type}");
-            ImGui.TextUnformatted($"Resource Strings: {activeLayout->Type}");
+            ImGui.TextUnformatted(TF($"Level ID: {activeLayout->LevelId}"));
+            ImGui.TextUnformatted(TF($"ID: {activeLayout->Id}"));
+            ImGui.TextUnformatted(TF($"Type: {activeLayout->Type}"));
+            ImGui.TextUnformatted(TF($"Resource Strings: {activeLayout->Type}"));
             foreach (var resourcePath in activeLayout->ResourcePaths.Strings)
             {
                 if (resourcePath.Value != null)
@@ -23,16 +23,16 @@ public class LayerDebuggerPane : IDebugPane
                     ImGui.TextUnformatted($"{resourcePath.Value->DataString}");
                 }
             }
-            ImGui.TextUnformatted($"Layers:");
+            ImGui.TextUnformatted(TF($"Layers:"));
             foreach (var layer in activeLayout->Layers)
             {
                 ImGui.TextUnformatted($"{layer.Item1}");
                 var pointer = layer.Item2.Value;
                 if (pointer != null)
                 {
-                    ImGui.TextUnformatted($"Layer ID: " + pointer->Id);
-                    ImGui.TextUnformatted($"Layer Group ID: " + pointer->LayerGroupId);
-                    ImGui.TextUnformatted($"Festival ID: " + pointer->FestivalId);
+                    ImGui.TextUnformatted(TF($"Layer ID: ") + pointer->Id);
+                    ImGui.TextUnformatted(TF($"Layer Group ID: ") + pointer->LayerGroupId);
+                    ImGui.TextUnformatted(TF($"Festival ID: ") + pointer->FestivalId);
                 }
             }
         }

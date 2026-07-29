@@ -26,7 +26,7 @@ public class ItemZodiacWeaponSourceRenderer : ItemInfoRenderer<ItemZodiacWeaponS
     public override Action<ItemSource> DrawTooltip => source =>
     {
         var asSource = this.AsSource(source);
-        ImGui.TextUnformatted("Class: " + asSource.ClassJob.Base.Name.ToImGuiString().ToTitleCase());
+        ImGui.TextUnformatted(T("Class: ") + asSource.ClassJob.Base.Name.ToImGuiString().ToTitleCase());
         this.DrawItems("Forms:", asSource.RewardItems);
     };
     public override Func<ItemSource, string> GetName => source =>

@@ -56,28 +56,28 @@ public sealed class StringColumnSetting : ColumnSetting<string?>
         if (HasValueSet(configuration))
         {
             ImGui.PushStyleColor(ImGuiCol.Text, ImGuiColors.HealerGreen);
-            ImGui.LabelText("##" + Key + "Label", Name + ":");
+            ImGui.LabelText("##" + Key + "Label", T(Name) + ":");
             ImGui.PopStyleColor();
         }
         else
         {
-            ImGui.LabelText("##" + Key + "Label", Name + ":");
+            ImGui.LabelText("##" + Key + "Label", T(Name) + ":");
         }
 
         ImGui.SameLine();
         ImGui.SetNextItemWidth(InputSize);
-        if (_placeHolder != null ? ImGui.InputTextWithHint("##"+Key+"Input", _placeHolder, ref value, 500) : ImGui.InputText("##"+Key+"Input", ref value, 500))
+        if (_placeHolder != null ? ImGui.InputTextWithHint("##"+Key+"Input", T(_placeHolder), ref value, 500) : ImGui.InputText("##"+Key+"Input", ref value, 500))
         {
             UpdateColumnConfiguration(configuration, value);
             success = true;
         }
 
         ImGui.SameLine();
-        ImGuiService.HelpMarker(HelpText);
+        ImGuiService.HelpMarker(T(HelpText));
         if (HasValueSet(configuration) && ShowReset)
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button(T("Reset##") + Key + "Reset"))
             {
                 ResetFilter(configuration);
                 success = true;
@@ -92,18 +92,18 @@ public sealed class StringColumnSetting : ColumnSetting<string?>
         var value = CurrentValue(configuration) ?? "";
 
         ImGui.SetNextItemWidth(InputSize);
-        if (ImGui.InputTextWithHint("##"+Key+"Input", Name, ref value, 500))
+        if (ImGui.InputTextWithHint("##"+Key+"Input", T(Name), ref value, 500))
         {
             UpdateColumnConfiguration(configuration, value);
             success = true;
         }
 
         ImGui.SameLine();
-        ImGuiService.HelpMarker(HelpText);
+        ImGuiService.HelpMarker(T(HelpText));
         if (HasValueSet(configuration) && ShowReset)
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button(T("Reset##") + Key + "Reset"))
             {
                 ResetFilter(configuration);
                 success = true;

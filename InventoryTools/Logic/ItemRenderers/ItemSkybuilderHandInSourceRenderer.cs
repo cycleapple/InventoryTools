@@ -32,16 +32,16 @@ public class ItemSkybuilderHandInSourceRenderer : ItemInfoRenderer<ItemSkybuilde
         var baseReward = asSource.HWDCrafterSupplyParams.BaseCollectableReward.Value;
         var midReward = asSource.HWDCrafterSupplyParams.MidCollectableReward.Value;
         var highReward = asSource.HWDCrafterSupplyParams.HighCollectableReward.Value;
-        ImGui.Text("Level: " + asSource.Level);
-        ImGui.Text("Max Level: " + asSource.LevelMax);
+        ImGui.Text(T("Level: ") + asSource.Level);
+        ImGui.Text(T("Max Level: ") + asSource.LevelMax);
 
-        ImGui.Text("Rewards:");
+        ImGui.Text(T("Rewards:"));
         using (ImRaii.PushIndent())
         {
-            ImGui.Text("Exp: " + baseReward.ExpReward + "/" + midReward.ExpReward + "/" + highReward.ExpReward);
-            ImGui.Text("Script: " + baseReward.ScriptRewardAmount + "/" + midReward.ScriptRewardAmount + "/" +
+            ImGui.Text(T("Exp: ") + baseReward.ExpReward + "/" + midReward.ExpReward + "/" + highReward.ExpReward);
+            ImGui.Text(T("Script: ") + baseReward.ScriptRewardAmount + "/" + midReward.ScriptRewardAmount + "/" +
                        highReward.ScriptRewardAmount);
-            ImGui.Text("Points: " + baseReward.Points + "/" + midReward.Points + "/" + highReward.Points);
+            ImGui.Text(T("Points: ") + baseReward.Points + "/" + midReward.Points + "/" + highReward.Points);
         }
     };
 

@@ -55,7 +55,7 @@ namespace InventoryTools.Ui.Pages
             var filterConfiguration = FilterConfiguration;
             var filterName = filterConfiguration.Name;
             var labelName = "##" + filterConfiguration.Key;
-            if (ImGui.CollapsingHeader("General", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+            if (ImGui.CollapsingHeader(T("General"), ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
             {
                 ImGui.SetNextItemWidth(100);
                 ImGui.LabelText(labelName + "FilterNameLabel", "Name: ");
@@ -67,7 +67,7 @@ namespace InventoryTools.Ui.Pages
                 }
 
                 ImGui.NewLine();
-                if (ImGui.Button("Export Configuration to Clipboard"))
+                if (ImGui.Button(T("Export Configuration to Clipboard")))
                 {
                     var base64 = _importExportService.ToBase64(filterConfiguration);
                     _clipboardService.CopyToClipboard(base64);

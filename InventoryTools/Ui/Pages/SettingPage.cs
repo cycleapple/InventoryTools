@@ -66,7 +66,7 @@ namespace InventoryTools.Ui.Pages
         {
             get
             {
-                return SubCategory?.FormattedName() ?? Category.FormattedName();
+                return T(SubCategory?.FormattedName() ?? Category.FormattedName());
             }
         }
 

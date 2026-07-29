@@ -82,7 +82,7 @@ public class SourceIconGroupingSetting : Setting<Dictionary<Type, bool>?>
                     {
                         foreach (var item in _choices)
                         {
-                            var text = item.Value.Replace("\u0002\u001F\u0001\u0003", "-");
+                            var text = T(item.Value).Replace("\u0002\u001F\u0001\u0003", "-");
                             if (text == "")
                             {
                                 continue;
@@ -110,11 +110,11 @@ public class SourceIconGroupingSetting : Setting<Dictionary<Type, bool>?>
                 }
 
                 ImGui.SameLine();
-                ImGuiService.HelpMarker(HelpText, Image, ImageSize);
+                ImGuiService.HelpMarker(T(HelpText), Image, ImageSize);
                 if (disableReset != true && hasValueSet)
                 {
                     ImGui.SameLine();
-                    if (ImGui.Button("Reset##Reset"))
+                    if (ImGui.Button(T("Reset##Reset")))
                     {
                         currentSettings.Remove(sourceRenderer.Key);
                         UpdateFilterConfiguration(configuration, currentSettings);

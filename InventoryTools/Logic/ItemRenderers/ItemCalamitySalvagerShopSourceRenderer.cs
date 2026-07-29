@@ -41,7 +41,7 @@ public class ItemCalamitySalvagerShopUseRenderer : ItemCalamitySalvagerShopSourc
             ? new List<string>()
             : shopSource.MapIds.Select(c => _mapSheet.GetRow(c).FormattedName)).Distinct().ToList();
 
-        ImGui.Text($"{allGilShops.Count} items available for purchase with gil in {maps.Count} zones");
+        ImGui.Text(TF($"{allGilShops.Count} items available for purchase with gil in {maps.Count} zones"));
     };
 
 
@@ -78,7 +78,7 @@ public class ItemCalamitySalvagerShopSourceRenderer : ItemInfoRenderer<ItemCalam
         if (firstItem.GilShopItem.Base.AchievementRequired.RowId != 0)
         {
             ImGui.Text(
-                $"Achievement Required: {firstItem.GilShopItem.Base.AchievementRequired.Value.Name.ExtractText()}");
+                TF($"Achievement Required: {firstItem.GilShopItem.Base.AchievementRequired.Value.Name.ExtractText()}"));
         }
 
         foreach (var quest in firstItem.GilShopItem.Base.QuestRequired)
@@ -86,7 +86,7 @@ public class ItemCalamitySalvagerShopSourceRenderer : ItemInfoRenderer<ItemCalam
             if (quest.RowId != 0)
             {
                 ImGui.Text(
-                    $"Quest Required: {quest.Value.Name.ExtractText()}");
+                    TF($"Quest Required: {quest.Value.Name.ExtractText()}"));
             }
         }
 
@@ -103,7 +103,7 @@ public class ItemCalamitySalvagerShopSourceRenderer : ItemInfoRenderer<ItemCalam
         if (asSource.GilShopItem.Base.AchievementRequired.RowId != 0)
         {
             ImGui.Text(
-                $"Achievement Required: {asSource.GilShopItem.Base.AchievementRequired.Value.Name.ExtractText()}");
+                TF($"Achievement Required: {asSource.GilShopItem.Base.AchievementRequired.Value.Name.ExtractText()}"));
         }
 
         foreach (var quest in asSource.GilShopItem.Base.QuestRequired)
@@ -111,7 +111,7 @@ public class ItemCalamitySalvagerShopSourceRenderer : ItemInfoRenderer<ItemCalam
             if (quest.RowId != 0)
             {
                 ImGui.Text(
-                    $"Quest Required: {quest.Value.Name.ExtractText()}");
+                    TF($"Quest Required: {quest.Value.Name.ExtractText()}"));
             }
         }
 

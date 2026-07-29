@@ -82,7 +82,7 @@ public class TooltipSourceInformationSetting : Setting<Dictionary<ItemInfoType, 
 
     public override void Draw(InventoryToolsConfiguration configuration, string? customName, bool? disableReset, bool? disableColouring)
     {
-        ImGui.LabelText("##" + Key + "Label", customName ?? Name);
+        ImGui.LabelText("##" + Key + "Label", customName ?? T(Name));
 
         using (var table = ImRaii.Table("SourceConfiguration", 4, ImGuiTableFlags.SizingFixedFit))
         {
@@ -222,7 +222,7 @@ public class TooltipSourceInformationSetting : Setting<Dictionary<ItemInfoType, 
                         {
                             foreach (var item in _choices)
                             {
-                                var text = item.Value.Replace("\u0002\u001F\u0001\u0003", "-");
+                                var text = T(item.Value).Replace("\u0002\u001F\u0001\u0003", "-");
                                 if (text == "")
                                 {
                                     continue;

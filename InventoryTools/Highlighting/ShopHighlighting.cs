@@ -78,7 +78,7 @@ public class ShopHighlighting : IDisposable
             {
                 var listNode = (AtkComponentList*)atkComponentBase;
                 var listItemIndex = listNode->ItemRendererList->AtkComponentListItemRenderer->ListItemIndex;
-                ImGui.TextUnformatted($"List Item Index: {listItemIndex}");
+                ImGui.TextUnformatted(TF($"List Item Index: {listItemIndex}"));
                 if (itemIndexMap != null)
                 {
                     foreach (var item in itemIndexMap)
@@ -87,7 +87,7 @@ public class ShopHighlighting : IDisposable
                     }
                 }
 
-                if (ImGui.InputText("Item", ref itemIdString, 128))
+                if (ImGui.InputText(T("Item"), ref itemIdString, 128))
                 {
                     if (uint.TryParse(itemIdString, out itemId))
                     {
@@ -95,14 +95,14 @@ public class ShopHighlighting : IDisposable
                     }
                     itemIdString = itemId.ToString();
                 }
-                if (ImGui.Button("Add Item"))
+                if (ImGui.Button(T("Add Item")))
                 {
                     if (uint.TryParse(itemIdString, out itemId))
                     {
                         highlightedItems.Add(itemId);
                     }
                 }
-                if (ImGui.Button("Remove Item"))
+                if (ImGui.Button(T("Remove Item")))
                 {
                     if (uint.TryParse(itemIdString, out itemId))
                     {

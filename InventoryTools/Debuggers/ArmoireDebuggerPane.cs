@@ -22,7 +22,7 @@ public class ArmoireDebuggerPane : IDebugPane
         var uiState = UIState.Instance();
         if (uiState == null)
         {
-            ImGui.Text("UIState not found.");
+            ImGui.Text(T("UIState not found."));
         }
         else
         {

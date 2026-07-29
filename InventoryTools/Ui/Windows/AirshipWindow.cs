@@ -58,19 +58,19 @@ namespace InventoryTools.Ui
         {
             if (AirshipExplorationPoint == null)
             {
-                ImGui.TextUnformatted("Airship Exploration Point with the ID " + _airshipExplorationPointId + " could not be found.");
+                ImGui.TextUnformatted(T("Airship Exploration Point with the ID ") + _airshipExplorationPointId + " could not be found.");
             }
             else
             {
                 ImGui.TextUnformatted(AirshipExplorationPoint.Base.NameShort.ExtractText());
-                ImGui.TextUnformatted("Unlocked Via: " + AirshipExplorationPoint.Unlock?.Base.NameShort.ExtractText() ?? "N/A");
-                ImGui.TextUnformatted("Rank Required: " + AirshipExplorationPoint.Base.RankReq);
+                ImGui.TextUnformatted(T("Unlocked Via: ") + AirshipExplorationPoint.Unlock?.Base.NameShort.ExtractText() ?? "N/A");
+                ImGui.TextUnformatted(T("Rank Required: ") + AirshipExplorationPoint.Base.RankReq);
                 ;
                 var itemIcon = ImGuiService.GetIconTexture(Icons.AirshipIcon);
                 ImGui.Image(itemIcon.Handle, new Vector2(100, 100) * ImGui.GetIO().FontGlobalScale);
 
 
-                if (ImGui.CollapsingHeader("Rewards (" + _drops.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+                if (ImGui.CollapsingHeader(T("Rewards (") + _drops.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                 {
                     ImGuiStylePtr style = ImGui.GetStyle();
                     float windowVisibleX2 = ImGui.GetWindowPos().X + ImGui.GetWindowContentRegionMax().X;
@@ -112,9 +112,9 @@ namespace InventoryTools.Ui
                 }
 
                 #if DEBUG
-                if (ImGui.CollapsingHeader("Debug"))
+                if (ImGui.CollapsingHeader(T("Debug")))
                 {
-                    ImGui.TextUnformatted("Duty ID: " + _airshipExplorationPointId);
+                    ImGui.TextUnformatted(T("Duty ID: ") + _airshipExplorationPointId);
                     Utils.PrintOutObject(AirshipExplorationPoint, 0, new List<string>());
                 }
                 #endif

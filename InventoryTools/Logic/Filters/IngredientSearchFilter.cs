@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using AllaganLib.GameSheets.Caches;
@@ -71,7 +71,7 @@ public class IngredientSearchFilter : UintMultipleChoiceFilter
     {
         base.DrawSearchBox(configuration);
         ImGui.SameLine();
-        if (ImGui.Button("Add all from filter"))
+        if (ImGui.Button(T("Add all from filter")))
         {
             ImGui.OpenPopup("AddAllFilterSelect");
         }
@@ -86,7 +86,7 @@ public class IngredientSearchFilter : UintMultipleChoiceFilter
                         c.FilterType is Logic.FilterType.SearchFilter or FilterType.SortingFilter or FilterType.GameItemFilter && c != configuration).ToArray();
                 foreach (var filter in filters)
                 {
-                    if (ImGui.Selectable("Add all from " + filter.Name))
+                    if (ImGui.Selectable(T("Add all from ") + filter.Name))
                     {
                         var filterResult = _listFilterService.Value.RefreshList(filter);
                         foreach (var item in filterResult)

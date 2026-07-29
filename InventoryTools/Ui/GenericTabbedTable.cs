@@ -42,7 +42,7 @@ public abstract class GenericTabbedTable<T> : GenericWindow, IGenericTabbedTable
         {
             if (tabBar.Success)
             {
-                using (var tabItem = ImRaii.TabItem("All"))
+                using (var tabItem = ImRaii.TabItem(T("All")))
                 {
                     if (tabItem.Success)
                     {
@@ -96,7 +96,7 @@ public abstract class GenericTabbedTable<T> : GenericWindow, IGenericTabbedTable
             {
                 continue;
             }
-            ImGui.TableSetupColumn(tableColumn.Name, tableColumn.ColumnFlags, tableColumn.Width, (uint)tableColumnIndex + 1);
+            ImGui.TableSetupColumn(T(tableColumn.Name), tableColumn.ColumnFlags, tableColumn.Width, (uint)tableColumnIndex + 1);
             index++;
         }
 
