@@ -8,6 +8,11 @@ Instead the changelog reader and automation surrounding plugin PRs will add the 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.html).
 
+## [13.1.13] - 2026-07-30
+
+### Fixed
+- Fixed current-character retainer market listings disappearing from inventory tracking and item tooltips on the Traditional Chinese API13 client.
+
 ## [13.1.9] - 2025-11-25
 
 ### Fixed
