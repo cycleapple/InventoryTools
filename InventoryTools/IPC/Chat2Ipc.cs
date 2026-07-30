@@ -9,6 +9,7 @@ using Dalamud.Game.Text.SeStringHandling.Payloads;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Ipc;
+using Dalamud.Plugin.Ipc.Exceptions;
 using Dalamud.Plugin.Services;
 using Dalamud.Bindings.ImGui;
 using InventoryTools.Logic;
@@ -51,10 +52,21 @@ public class Chat2Ipc : IChat2Ipc
     }
 
     private void Register() {
+        if (_id != null)
+        {
+            return;
+        }
+
         try
         {
             _id = RegisterCallGate.InvokeFunc();
             _logger.LogTrace("Attempting to register with chat2");
+        }
+        catch (IpcNotReadyError)
+        {
+            // ChatTwo is optional and may be loaded after InventoryTools. Its
+            // ChatTwo.Available event will call Register again once it is ready.
+            _logger.LogDebug("ChatTwo IPC is not ready; waiting for its availability event.");
         }
         catch (Exception exception)
         {
@@ -64,6 +76,7 @@ public class Chat2Ipc : IChat2Ipc
     }
 
     public void Disable() {
+        AvailableCallGate.Unsubscribe(Register);
 
         if (_id != null) {
             try
@@ -81,6 +94,10 @@ public class Chat2Ipc : IChat2Ipc
         {
             InvokeCallGate.Unsubscribe(Integration);
             _logger.LogTrace("Attempting to unsubscribe with chat2's IPC");
+        }
+        catch (IpcNotReadyError)
+        {
+            _logger.LogDebug("ChatTwo IPC was already unavailable while InventoryTools was stopping.");
         }
         catch (Exception exception)
         {
