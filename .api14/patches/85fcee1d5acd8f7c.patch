@@ -1,0 +1,118 @@
+diff --git a/CriticalCommonLib.csproj b/CriticalCommonLib.csproj
+index f19b7ab..371b0ec 100644
+--- a/CriticalCommonLib.csproj
++++ b/CriticalCommonLib.csproj
+@@ -1,4 +1,4 @@
+-<Project Sdk="Dalamud.NET.Sdk/13.1.0">
++<Project Sdk="Dalamud.NET.Sdk/14.0.1">
+   <PropertyGroup>
+     <Configurations>Debug;Release;FullDebug</Configurations>
+   </PropertyGroup>
+diff --git a/Models/ActionType.cs b/Models/ActionType.cs
+index 29f0165..322a4a5 100644
+--- a/Models/ActionType.cs
++++ b/Models/ActionType.cs
+@@ -11,7 +11,7 @@ namespace CriticalCommonLib.Models
+             if (action == null || action.Value.RowId == 0) {
+                 return false;
+             }
+-            var type = (ActionType) action.Value.Type;
++            var type = (ActionType) action.Value.Action.RowId;
+             return ((IList) Valid).Contains(type);
+         }
+     }
+diff --git a/Services/UnlockTrackerService.cs b/Services/UnlockTrackerService.cs
+index 561f7be..cc4f408 100644
+--- a/Services/UnlockTrackerService.cs
++++ b/Services/UnlockTrackerService.cs
+@@ -40,7 +40,7 @@ public unsafe class UnlockTrackerService : IUnlockTrackerService
+     private void ItemRemoved(List<InventoryChange> inventoryChanges, InventoryMonitor.ItemChanges? _)
+     {
+         if (inventoryChanges.Count != 1) return;
+-        var type = (ActionType?)inventoryChanges[0].Item.Base.ItemAction.ValueNullable?.Type;
++        var type = (ActionType?)inventoryChanges[0].Item.Base.ItemAction.ValueNullable?.Action.RowId;
+         if (type != null) QueueUnlockCheck(inventoryChanges[0].Item);
+     }
+ 
+@@ -98,7 +98,7 @@ public unsafe class UnlockTrackerService : IUnlockTrackerService
+         _pluginLog.Verbose("Checking all valid items for unlock status.");
+         foreach (var item in _dataManager.GetExcelSheet<Item>().Where(c => c.ItemAction.RowId != 0))
+         {
+-            var type = (ActionType?)item.ItemAction.ValueNullable?.Type;
++            var type = (ActionType?)item.ItemAction.ValueNullable?.Action.RowId;
+             if (type == null) continue;
+             _unlockedItemsToCheck.Enqueue(item.RowId);
+         }
+@@ -120,7 +120,7 @@ public unsafe class UnlockTrackerService : IUnlockTrackerService
+         if (item.ItemAction.RowId == 0)
+             return false;
+ 
+-        switch ((ActionType)item.ItemAction.Value.Type)
++        switch ((ActionType)item.ItemAction.Value.Action.RowId)
+         {
+             case ActionType.Companion:
+                 unlocked = UIState.Instance()->IsCompanionUnlocked(item.ItemAction.Value.Data[0]);
+diff --git a/packages.lock.json b/packages.lock.json
+index 5c7801d..07eacc8 100644
+--- a/packages.lock.json
++++ b/packages.lock.json
+@@ -1,7 +1,7 @@
+ {
+   "version": 1,
+   "dependencies": {
+-    "net9.0-windows7.0": {
++    "net10.0-windows7.0": {
+       "AllaganLib.GameSheets": {
+         "type": "Direct",
+         "requested": "[1.3.12, )",
+@@ -50,11 +50,7 @@
+         "type": "Direct",
+         "requested": "[3.0.0-beta.54, )",
+         "resolved": "3.0.0-beta.54",
+-        "contentHash": "V1LqoHpfgEUoYJHiboaL6rZS/Wfr/K7xlsL0/SjwWtuFtV1d3bV8sTEPjURHmfxySND8KgQex5WuuuwMBraDog==",
+-        "dependencies": {
+-          "System.Memory": "4.5.5",
+-          "System.ValueTuple": "4.5.0"
+-        }
++        "contentHash": "V1LqoHpfgEUoYJHiboaL6rZS/Wfr/K7xlsL0/SjwWtuFtV1d3bV8sTEPjURHmfxySND8KgQex5WuuuwMBraDog=="
+       },
+       "Microsoft.Extensions.Hosting": {
+         "type": "Direct",
+@@ -119,10 +115,7 @@
+       "Autofac": {
+         "type": "Transitive",
+         "resolved": "8.4.0",
+-        "contentHash": "XMWHyO6fXTv8rwCfhm6+64mQS6CyL0rve/hWSODsUrVuEGtq1fjxSOlVTBqCRsW6L8K3OQDskJaPB1boVMI2eQ==",
+-        "dependencies": {
+-          "System.Diagnostics.DiagnosticSource": "8.0.1"
+-        }
++        "contentHash": "XMWHyO6fXTv8rwCfhm6+64mQS6CyL0rve/hWSODsUrVuEGtq1fjxSOlVTBqCRsW6L8K3OQDskJaPB1boVMI2eQ=="
+       },
+       "Autofac.Extensions.DependencyInjection": {
+         "type": "Transitive",
+@@ -417,25 +410,10 @@
+         "resolved": "9.0.9",
+         "contentHash": "z4pyMePOrl733ltTowbN565PxBw1oAr8IHmIXNDiDqd22nFpYltX9KhrNC/qBWAG1/Zx5MHX+cOYhWJQYCO/iw=="
+       },
+-      "System.Diagnostics.DiagnosticSource": {
+-        "type": "Transitive",
+-        "resolved": "8.0.1",
+-        "contentHash": "vaoWjvkG1aenR2XdjaVivlCV9fADfgyhW5bZtXT23qaEea0lWiUljdQuze4E31vKM7ZWJaSUsbYIKE3rnzfZUg=="
+-      },
+       "System.Diagnostics.EventLog": {
+         "type": "Transitive",
+         "resolved": "9.0.9",
+         "contentHash": "wpsUfnyv8E5K4WQaok6weewvAbQhcLwXFcHBm5U0gdEaBs85N//ssuYvRPFWwz2rO/9/DFP3A1sGMzUFBj8y3w=="
+-      },
+-      "System.Memory": {
+-        "type": "Transitive",
+-        "resolved": "4.5.5",
+-        "contentHash": "XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw=="
+-      },
+-      "System.ValueTuple": {
+-        "type": "Transitive",
+-        "resolved": "4.5.0",
+-        "contentHash": "okurQJO6NRE/apDIP23ajJ0hpiNmJ+f0BwOlB/cSqTLQlw5upkf+5+96+iG2Jw40G1fCVCyPz/FhIABUjMR+RQ=="
+       }
+     }
+   }

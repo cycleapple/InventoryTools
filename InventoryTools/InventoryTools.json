@@ -1,4 +1,4 @@
-﻿{
+{
   "Author": "Critical_Impact",
   "Name": "Allagan Tools",
   "Punchline": "整理 FFXIV 物品、查找收納位置、規劃製作，並搜尋怪物、任務、飛空艇與潛水艇資料。",
@@ -6,7 +6,7 @@
   "Tags": ["Inventory", "Sorting", "Filtering"],
   "InternalName": "InventoryTools",
   "RepoUrl": "https://github.com/cycleapple/InventoryTools/tree/api13-tw",
-  "DalamudApiLevel": 13,
+  "DalamudApiLevel": 14,
   "LoadPriority": 0,
   "CanUnloadAsync": false,
   "IconUrl": "https://raw.githubusercontent.com/Critical-Impact/InventoryTools/main/InventoryTools/Images/icon.png",

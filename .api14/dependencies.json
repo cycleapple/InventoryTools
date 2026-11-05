@@ -1,0 +1,20 @@
+[
+  {
+    "path": "CriticalCommonLib",
+    "baseCommit": "de2e3984ccb7a81c7e1eae6cc6dff34ef37f85a2",
+    "patch": "patches/85fcee1d5acd8f7c.patch",
+    "sha256": "0538a33c312f911f27b334424ebb9085a074adf0149999b730cfb8a4668e5915"
+  },
+  {
+    "path": "OtterGui",
+    "baseCommit": "f354444776591ae423e2d8374aae346308d81424",
+    "patch": "patches/fa3971c4e08c8077.patch",
+    "sha256": "d6f8c9d5a5cf24cca888a2701abe5ae8672f32c033e3b77d0d9b57e09f1c8072"
+  },
+  {
+    "path": "OtterGui/OtterGuiInternal",
+    "baseCommit": "49631aab5c267953f9d442546488ea3bfdf52fa7",
+    "patch": "patches/83d6c41b4082a781.patch",
+    "sha256": "9997cf5bc08788acb336cb58a8405138ba9a14a407dd295f4ccbd1bd4cafd5a1"
+  }
+]
