@@ -1,5 +1,5 @@
 diff --git a/OtterGui.csproj b/OtterGui.csproj
-index 83661b7..7b122dc 100644
+index 83661b7..7d22782 100644
 --- a/OtterGui.csproj
 +++ b/OtterGui.csproj
 @@ -1,4 +1,4 @@
@@ -8,8 +8,17 @@ index 83661b7..7b122dc 100644
      <PropertyGroup>
          <RootNamespace>OtterGui</RootNamespace>
          <AssemblyName>OtterGui</AssemblyName>
+@@ -25,7 +25,7 @@
+     </ItemGroup>
+ 
+     <ItemGroup>
+-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
++        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.1" />
+         <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" />
+         <Reference Include="Dalamud.Bindings.ImGui" Private="false" />
+     </ItemGroup>
 diff --git a/packages.lock.json b/packages.lock.json
-index d423691..e8175b4 100644
+index d423691..8e0387e 100644
 --- a/packages.lock.json
 +++ b/packages.lock.json
 @@ -1,12 +1,12 @@
@@ -29,10 +38,25 @@ index d423691..e8175b4 100644
        },
        "JetBrains.Annotations": {
          "type": "Direct",
-@@ -27,51 +27,6 @@
+@@ -16,62 +16,17 @@
+       },
+       "Microsoft.Extensions.DependencyInjection": {
+         "type": "Direct",
+-        "requested": "[9.0.2, )",
+-        "resolved": "9.0.2",
+-        "contentHash": "ZffbJrskOZ40JTzcTyKwFHS5eACSWp2bUQBBApIgGV+es8RaTD4OxUG7XxFr3RIPLXtYQ1jQzF2DjKB5fZn7Qg==",
++        "requested": "[10.0.1, )",
++        "resolved": "10.0.1",
++        "contentHash": "zerXV0GAR9LCSXoSIApbWn+Dq1/T+6vbXMHGduq1LoVQRHT0BXsGQEau0jeLUBUcsoF/NaUT8ADPu8b+eNcIyg==",
+         "dependencies": {
+-          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.2"
++          "Microsoft.Extensions.DependencyInjection.Abstractions": "10.0.1"
+         }
+       },
+       "Microsoft.Extensions.DependencyInjection.Abstractions": {
          "type": "Transitive",
-         "resolved": "9.0.2",
-         "contentHash": "MNe7GSTBf3jQx5vYrXF0NZvn6l7hUKF6J54ENfAgCO8y6xjN1XUmKKWG464LP2ye6QqDiA1dkaWEZBYnhoZzjg=="
+-        "resolved": "9.0.2",
+-        "contentHash": "MNe7GSTBf3jQx5vYrXF0NZvn6l7hUKF6J54ENfAgCO8y6xjN1XUmKKWG464LP2ye6QqDiA1dkaWEZBYnhoZzjg=="
 -      },
 -      "Microsoft.Extensions.Logging": {
 -        "type": "Transitive",
@@ -78,6 +102,8 @@ index d423691..e8175b4 100644
 -          "Microsoft.Extensions.Logging": "[9.0.0, )",
 -          "System.IO.Hashing": "[9.0.0, )"
 -        }
++        "resolved": "10.0.1",
++        "contentHash": "oIy8fQxxbUsSrrOvgBqlVgOeCtDmrcynnTG+FQufcUWBrwyPfwlUkCDB2vaiBeYPyT+20u9/HeuHeBf+H4F/8g=="
        }
      }
    }

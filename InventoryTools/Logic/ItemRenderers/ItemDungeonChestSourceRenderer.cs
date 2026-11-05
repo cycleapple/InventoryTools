@@ -17,6 +17,7 @@ using InventoryTools.Ui;
 
 namespace InventoryTools.Logic.ItemRenderers;
 
+// API14 supplemental chest data provides chest identity but no longer supplies Position coordinates.
 public class ItemDungeonChestSourceRenderer : ItemInfoRenderer<ItemDungeonChestSource>
 {
     public ItemDungeonChestSourceRenderer(ItemSheet itemSheet, MapSheet mapSheet, ITextureProvider textureProvider,
@@ -39,7 +40,7 @@ public class ItemDungeonChestSourceRenderer : ItemInfoRenderer<ItemDungeonChestS
         using (ImRaii.PushIndent())
         {
             ImGui.Text(
-                TF($"Chest {asSource.DungeonChest.ChestNo + 1} ({asSource.DungeonChest.Position.X} / {asSource.DungeonChest.Position.Y})"));
+                TF($"Chest {asSource.DungeonChest.ChestNo + 1}"));
         }
     };
 
@@ -62,7 +63,7 @@ public class ItemDungeonChestSourceRenderer : ItemInfoRenderer<ItemDungeonChestS
                 foreach (var chest in dungeon.OrderBy(c => c.DungeonChest.ChestNo))
                 {
                     ImGui.Text(
-                        TF($"Chest {chest.DungeonChest.ChestNo + 1} ({chest.DungeonChest.Position.X} / {chest.DungeonChest.Position.Y})"));
+                        TF($"Chest {chest.DungeonChest.ChestNo + 1}"));
                 }
             }
         }
@@ -82,6 +83,6 @@ public class ItemDungeonChestSourceRenderer : ItemInfoRenderer<ItemDungeonChestS
     public override Func<ItemSource, string> GetDescription => source =>
     {
         var asSource = AsSource(source);
-        return $"{asSource.ContentFinderCondition.FormattedName} ({asSource.DungeonChest.Position.X } / {asSource.DungeonChest.Position.Y})";
+        return $"{asSource.ContentFinderCondition.FormattedName}";
     };
 }
